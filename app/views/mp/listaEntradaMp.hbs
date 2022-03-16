@@ -1,0 +1,110 @@
+<div class="container mt-2">
+
+    <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+        <li class="nav-item">
+             <a class="nav-link" href="/usuarios">USUARIOS</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/roles">ROLES</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/privilegios">PRIVILEGIOS</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/recintos">RECINTOS</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="#">MATERIA PRIMA</a>
+        </li>
+    </ul>
+
+    {{#if completo}}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mx-auto">
+
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{completo}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+
+            <a href="/mp" class="btn btn-outline-dark btn-sm mb-4">
+                <i class='bx bx-arrow-back'></i>
+                Regresar
+            </a>
+
+            <div class="row">
+                <div class="col">
+                    <a href="/mp/addEntradaMp" class="btn btn-outline-success mb-4">
+                        <i class='bx bxs-plus-circle'></i>
+                        Registrar entrada
+                    </a>
+                    <!--<a href="/mp/addMp" class="btn btn-outline-success mb-4">
+                        <i class='bx bxs-plus-circle'></i>
+                        Añadir al inventario
+                    </a>-->
+                </div>
+            </div>
+
+        <div class="justify-content-center row">
+            <div class="table-responsive-xl">
+                <table class="table table-responsive table-striped table-borderedtable-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Medida</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Dejo materia prima</th>
+                        <th scope="col">Proveedor</th>
+                        <th scope="col">Entregado</th>
+                        <th colspan="2">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each mpes}}
+                        <tr>
+                        <th class="text-center" scope="row"> {{ ID_entradaMp }} </th>
+                        <td>{{Nom_mp}}</td>
+                        <td>{{Desc_mp}}</td>
+                        <td class="text-center">{{Medida_mp}}</td>
+                        <td class="text-center">{{Cant_mp}}</td>
+                        <td class="text-center">{{NomUs_dejo}}</td>
+                        <td class="text-center">{{proveedor}}</td>
+                        <td class="text-center">{{timeago Date_Hr}}</td>
+                        <td>
+                            <a href="/mp/editEntradaMp/{{ ID_entradaMp }}" class="btn btn-outline-primary btn-sm">
+                                <i class='bx bx-edit-alt'></i>
+                                Editar
+                            </a>
+                            
+                        </td>
+                        <td>
+                            <button onclick="popUpDelEntradaMp({{ ID_entradaMp }})" class="btn btn-outline-danger btn-sm">
+                                <ion-icon name="trash-outline"></ion-icon>
+                                Eliminar
+                            </button>
+                        </td>
+                        </tr>
+                        {{else}}
+                        <div class="col-md-4 mx-auto">
+                            <div class="card card-body text-center">
+                                <p>No hay registro de materia prima</p>
+                            </div>
+                        </div>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+            <div class="row">
+                <caption class="pl-2 justify-content-center">Registro de materia prima entrante</caption>
+            </div>
+        </div>
+    </div>

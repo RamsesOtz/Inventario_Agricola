@@ -1,0 +1,80 @@
+<div class="container mt-2">
+
+    <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+        <li class="nav-item">
+             <a class="nav-link" href="/usuarios">USUARIOS</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/roles">ROLES</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/privilegios">PRIVILEGIOS</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="#">RECINTOS</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/mp">MATERIA PRIMA</a>
+        </li>
+    </ul>
+
+    {{#if completo}}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mx-auto">
+
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{completo}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+
+        <div class="row pt-4 mt-4">
+            <div class="col-md-8 mx-auto  pb-4 mb-4">
+
+                <a href="/recintos" class="btn btn-outline-dark btn-sm mb-4">
+                    <i class='bx bx-arrow-back'></i>
+                    Regresar
+                    </a>
+
+                <div class="card mt-2">
+                    <div class="card-header text-center">
+                        NUEVO RECINTO
+                    </div>
+                    <div class="card-body">
+                        <form action="/recintos/addRecintos" method="POST">
+                            <div class="form-group">
+                                <label>Nombre del recinto: </label>
+                                <input type="text" class="form-control" name="Recinto" placeholder="Nombre del recinto...." autofocus>
+                            </div>
+                            <div class="form-group">
+                                <label>Ubicacion: </label>
+                                <input type="text" class="form-control" name="Ubicacion" placeholder="Ubicacion....">
+                            </div>
+                            <div class="form-group">
+                                <label>Nombre del encargado: </label>
+                                <input name="Npatron" type="text" class="form-control" placeholder="Nombre del encargado del recinto...."></input>
+                            </div>
+                            <div class="form-group">
+                                <label>Apellido del encargado: </label>
+                                <input name="Apatron" type="text" class="form-control" placeholder="Apellido del encargado del recinto...."></input>
+                            </div>
+                            <div class="form-group">
+                                <label>Nombre del usuario: </label>
+                                <input name="usuario" type="text" class="form-control" placeholder="Nombre del usuario...."></input>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-dark btn-block">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>

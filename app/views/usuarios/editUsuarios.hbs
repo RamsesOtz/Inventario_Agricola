@@ -1,0 +1,91 @@
+<div class="container mt-2">
+
+    <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+        <li class="nav-item">
+             <a class="nav-link active" href="#">USUARIOS</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/roles">ROLES</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/privilegios">PRIVILEGIOS</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/recintos">RECINTOS</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/mp">MATERIA PRIMA</a>
+        </li>
+    </ul>
+
+    {{#if completo}}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mx-auto">
+
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{completo}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+
+        <div class="row pt-4 mt-4">
+            <div class="col-md-8 mx-auto pb-4 mb-4">
+
+                <a href="/usuarios" class="btn btn-outline-dark btn-sm mb-4">
+                    <i class='bx bx-arrow-back'></i>
+                    Regresar
+                    </a>
+
+                <div class="card">
+                    <div class="card-header text-center">
+                        EDITAR USUARIO
+                    </div>
+                    <div class="card-body">
+                        <form action="/usuarios/editUsuarios/{{ usuario.ID_emp }}" method="POST">
+                            <div class="form-group">
+                                <label>ID: </label>
+                                <input type="text" disabled value="{{ usuario.ID_emp }}" class="form-control" name="ID_emp">
+                            </div>
+                            <div class="form-group">
+                                <label>Nombre del empleado: </label>
+                                <input type="text" value="{{ usuario.Nom_emp }}" class="form-control" name="Nom_emp" autofocus>
+                            </div>
+                            <div class="form-group">
+                                <label>Nombre del apellido: </label>
+                                <input type="text" value="{{ usuario.Apellido_emp }}" class="form-control" name="Apellido_emp">
+                            </div>
+                            <div class="form-group">
+                                <label>Roles</label>
+                                <select onchange="getSelectValueRol()" class="form-control" id="listRol" name="NomRol">
+                                    <option value=""> Asigna un rol al usuario...</option>
+                                    <option value="administrador">Administrador</option>
+                                    <option value="coordinador">Coordinador</option>
+                                    <option value="usuario">Usuario</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Nombre de usuario: </label>
+                                <input type="text" value="{{ usuario.usuario }}" class="form-control" name="usuario">
+                            </div>
+                            <div class="form-group">
+                                <label>Correo electronico: </label>
+                                <input type="email" value="{{ usuario.correo }}" class="form-control" name="correo">
+                            </div>
+                            <div class="form-group">
+                                <label>Contraseña: </label>
+                                <input type="text" value="{{ usuario.pass }}" class="form-control" name="pass">
+                            </div>
+                                <button class="btn btn-dark btn-block" onclick="popUpEditUs({{ ID_emp }})">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

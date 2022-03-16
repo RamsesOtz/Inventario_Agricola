@@ -1,0 +1,92 @@
+<div class="container mt-2">
+
+    <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+        <li class="nav-item">
+             <a class="nav-link active" href="/inventarioH">INVENTARIO</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/entradaH">ENTRADAS</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/salidaH">SALIDAS</a>
+        </li>
+    </ul>
+
+    {{#if completo}}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mx-auto">
+
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{completo}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+
+        <div class="row">
+        <a href="/inventarioH/addInventarioH" class="btn btn-success mb-4">
+            <i class='bx bxs-plus-circle'></i>
+            Pedir Materia Prima
+        </a>
+            <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Medida</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Existencias</th>
+                <th scope="col">Estatus</th>
+                <th scope="col">ID_entrada</th>
+                <th scope="col">ID_salida</th>
+                <th colspan="2">Peticion realizada</th>
+                <th colspan="2">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each inventariosH}}
+                <tr>
+                <th scope="row"> {{ ID_mpH }} </th>
+                <td>{{Nom_mpH}}</td>
+                <td>{{Desc_mpH}}</td>
+                <td>{{Medida_mpH}}</td>
+                <td>{{Cant_mpH}}</td>
+                <td>{{StockH}}</td>
+                <td>{{EstatusH}}</td>
+                <td>{{ID_entradaH}}</td>
+                <td>{{ID_salidaH}}</td>
+                <td>{{timeago Date_HrEnviado}}</td>
+                <td>
+                    <a href="/inventarioH/editInventarioH/{{ ID_mpH }}" class="btn btn-primary btn-sm">
+                        <i class='bx bx-edit-alt'></i>
+                        Editar
+                    </a>
+                    
+                </td>
+                <td>
+                    <button class="btn btn-danger btn-sm" onclick="popUpDelIH({{ID_mpH}})">
+                        <ion-icon name="trash-outline"></ion-icon>
+                        Eliminar
+                    </button>
+                </td>
+                </tr>
+                {{else}}
+                <div class="col-md-4 mx-auto">
+                    <div class="card card-body text-center">
+                        <p>No se encuentran materiales en el inventario</p>
+                    </div>
+                </div>
+                {{/each}}
+            </tbody>
+            </table>
+        </div>
+</div>
+
+
+</div>

@@ -1,0 +1,87 @@
+<div class="container mt-2">
+
+    <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+        <li class="nav-item">
+             <a class="nav-link" href="/usuarios">USUARIOS</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/roles">ROLES</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/privilegios">PRIVILEGIOS</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="/recintos">RECINTOS</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/mp">MATERIA PRIMA</a>
+        </li>
+    </ul>
+
+    {{#if completo}}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mx-auto">
+
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{completo}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+
+        <div class="row">
+        <a href="/recintos/addRecintos" class="btn btn-success mb-4">
+            <i class='bx bxs-plus-circle'></i>
+            Nuevo Recinto
+        </a>
+            <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Recinto</th>
+                <th scope="col">Ubicacion</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Usuario</th>
+                <th colspan="2">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each recintos}}
+                <tr>
+                <th scope="row"> {{ ID_Recinto }} </th>
+                <td>{{Recinto}}</td>
+                <td>{{Ubicacion}}</td>
+                <td>{{Npatron}}</td>
+                <td>{{Apatron}}</td>
+                <td>{{usuario}}</td>
+                <td>
+                    <a href="/recintos/editRecintos/{{ ID_Recinto }}" class="btn btn-primary btn-sm">
+                        <i class='bx bx-edit-alt'></i>
+                        Editar
+                    </a>
+                    
+                </td>
+                <td>
+                    <button onclick="popUpDelRecinto({{ ID_Recinto }})" class="btn btn-danger btn-sm">
+                        <ion-icon name="trash-outline"></ion-icon>
+                        Eliminar
+                    </button>
+                </td>
+                </tr>
+                {{else}}
+                <div class="col-md-4 mx-auto">
+                    <div class="card card-body text-center">
+                        <p>No se encuentran recintos guardados</p>
+                    </div>
+                </div>
+                {{/each}}
+            </tbody>
+            </table>
+        </div>
+    </div>

@@ -1,0 +1,71 @@
+<div class="container mt-2">
+
+    <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+        <li class="nav-item">
+             <a class="nav-link" href="/usuarios">USUARIOS</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/roles">ROLES</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="#">PRIVILEGIOS</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/recintos">RECINTOS</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/mp">MATERIA PRIMA</a>
+        </li>
+    </ul>
+
+    {{#if completo}}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mx-auto">
+
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{completo}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+
+        <div class="row pt-4 mt-4">
+            <div class="col-md-8 mx-auto">
+
+                <a href="/privilegios" class="btn btn-outline-dark btn-sm mb-4">
+                    <i class='bx bx-arrow-back'></i>
+                    Regresar
+                    </a>
+
+                <div class="card">
+                    <div class="card-header text-center">
+                        EDITAR PRIVILEGIOS
+                    </div>
+                    <div class="card-body">
+                        <form action="/privilegios/editPrivilegios/{{ privilegio.ID_priv }}" method="POST">
+                             <div class="form-group">
+                                <label>ID: </label>
+                                <input type="text" disabled value="{{ privilegio.ID_priv }}" class="form-control" name="ID_priv">
+                            </div>
+                            <div class="form-group">
+                                <label>Nombre del privilegio: </label>
+                                <input type="text" value="{{ privilegio.NomPriv }}" class="form-control" name="NomPriv" placeholder="Nombre del privilegio...." autofocus>
+                            </div>
+                            <div class="form-group">
+                                <label>Descripción del privilegio: </label>
+                                <textarea name="DescPriv" rows="2" class="form-control" placeholder="Descripcion...."> {{ privilegio.DescPriv }} </textarea>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-dark btn-block">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
