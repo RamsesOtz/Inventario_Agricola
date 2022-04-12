@@ -1,102 +1,116 @@
-<div class="container mt-2">
+{{> navAdministrador}}
 
-    <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
-        <li class="nav-item">
-             <a class="nav-link active" href="#">USUARIOS</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/roles">ROLES</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/privilegios">PRIVILEGIOS</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/recintos">RECINTOS</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/mp">MATERIA PRIMA</a>
-        </li>
-    </ul>
+<section class="home-section pt-4 mt-4">
+    <div class="container mt-2">
 
-    {{#if completo}}
-    <div class="container">
-        <div class="row">
-            <div class="mx-auto">
+        <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">USUARIOS</a>
+            </li>
+           <!--<li class="nav-item">
+                <a class="nav-link" href="/Administrador/roles">ROLES</a>
+            </li>-->
+            <!--<li class="nav-item">
+                <a class="nav-link" href="/Administrador/privilegios">PRIVILEGIOS</a>
+            </li>-->
+            <li class="nav-item">
+                <a class="nav-link" href="/Administrador/recintos">RECINTOS</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Administrador/mp">MATERIA PRIMA</a>
+            </li>
+        </ul>
 
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {{completo}}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-    {{/if}}
+        {{#if completo}}
+        <div class="container">
+            <div class="row">
+                <div class="mx-auto">
 
-        <div class="row pt-4 mt-4">
-            <div class="col-md-8 mx-auto pb-4 mb-4">
-
-                <a href="/usuarios" class="btn btn-outline-dark btn-sm mb-4">
-                    <i class='bx bx-arrow-back'></i>
-                    Regresar
-                    </a>
-
-                <div class="card">
-                    <div class="card-header text-center">
-                        NUEVO USUARIO
-                    </div>
-                    <div class="card-body">
-                        <form action="/registrar" method="POST">
-                            <div class="form-group">
-                                <label>Nombre del empleado: </label>
-                                <input type="text" class="form-control" name="Nom_emp" placeholder="Nombre del empleado...." autofocus>
-                            </div>
-                            <div class="form-group">
-                                <label>Apellido del empleado: </label>
-                                <input type="text" class="form-control" name="Apellido_emp" placeholder="Apellido del empleado....">
-                            </div>
-                            <div class="form-group">
-                                <label>Nombre de usuario: </label>
-                                <input type="text" class="form-control" name="usuario" placeholder="Ingresa el nombre del usuario....">
-                            </div>
-                            <div class="form-group">
-                                <label>Correo electronico: </label>
-                                <input type="email" class="form-control" name="correo" placeholder="Ejemplo@gmail.com....">
-                            </div>
-                            <div class="form-group">
-                                <label>Contraseña: </label>
-                                <input type="password" class="form-control" name="pass" placeholder="Ingresa una contraseña....">
-                            </div>
-                            <!--<div class="form-group">
-                                <label>Rol</label>
-                                <select onchange="getSelectValueRol()" class="custom-select" id="listRol" name="ID_rol">
-                                        <option value=""> Asigna un rol al usuario...</option>
-                                        <option value="1">Administrador</option>
-                                        <option value="2">Coordinador</option>
-                                        <option value="3">Usuario</option>
-                                </select>
-                            </div>-->
-                            <div class="form-group">
-                                <label>Rol</label>
-                                <!--<input type="number" value="{{ mp.Medida_materiaPrima }}" class="form-control" name="Medida_materiaPrima">-->
-                                <select onchange="getSelectValueRol()" class="custom-select" id="listRol" name="NomRol">
-                                        <option value=""> Asigna un rol al usuario...</option>
-                                        <option value="administrador">Administrador</option><!--Administrdor-->
-                                        <option value="coordinador">Coordinador</option><!--Coordinador-->
-                                        <option value="usuario">Usuario</option><!--Usuario-->
-                                </select>
-                            </div>
-                            <!--<div class="form-group">
-                                <label>ID_rol</label>
-                                <input disabled class="form-control" id="inputBlock" name="ID_rol" placeholder="Selecciona un rol">
-                            </div>-->
-                            <div class="form-group">
-                                <button class="btn btn-dark btn-block" id="Gdisabled">Guardar</button>
-                            </div>
-                        </form>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{completo}}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+        {{/if}}
+
+            <div class="row pt-4 mt-4">
+                <div class="col-md-8 mx-auto pb-4 mb-4">
+
+                    <a href="/Administrador/usuarios" class="btn btn-outline-dark btn-sm mb-4">
+                        <i class='bx bx-arrow-back'></i>
+                        Regresar
+                        </a>
+
+                    <div class="card">
+                        <div class="card-header text-center">
+                            NUEVO USUARIO
+                        </div>
+                        <div class="card-body">
+                            <form action="/registrar" method="POST">
+                                <div class="form-group">
+                                    <label>Nombre del empleado: </label>
+                                    <input type="text" class="form-control" name="Nom_emp" placeholder="Nombre del empleado...." autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <label>Apellido del empleado: </label>
+                                    <input type="text" class="form-control" name="Apellido_emp" placeholder="Apellido del empleado....">
+                                </div>
+                                <div class="form-group">
+                                    <label>Nombre de usuario: </label>
+                                    <input type="text" class="form-control" name="usuario" placeholder="Ingresa el nombre del usuario....">
+                                </div>
+                                <div class="form-group">
+                                    <label>Correo electronico: </label>
+                                    <input type="email" class="form-control" name="correo" placeholder="Ejemplo@gmail.com....">
+                                </div>
+                                <div class="form-group">
+                                    <label>Contraseña: </label>
+                                    <input type="password" class="form-control" name="pass" placeholder="Ingresa una contraseña....">
+                                </div>
+                                <!--<div class="form-group">
+                                    <label>Rol</label>
+                                    <select onchange="getSelectValueRol()" class="custom-select" id="listRol" name="ID_rol">
+                                            <option value=""> Asigna un rol al usuario...</option>
+                                            <option value="1">Administrador</option>
+                                            <option value="2">Coordinador</option>
+                                            <option value="3">Usuario</option>
+                                    </select>
+                                </div>-->
+                                <div class="form-group">
+                                    <label>Rol</label>
+                                    <!--<input type="number" value="{{ mp.Medida_materiaPrima }}" class="form-control" name="Medida_materiaPrima">-->
+                                    <select onchange="getSelectValueRol()" class="custom-select" id="listRol" name="NomRol">
+                                            <option value="">Asigna un rol al usuario...</option>
+                                            <option value="administrador">Administrador</option><!--Administrdor-->
+                                            <option value="coordinador">Coordinador</option><!--Coordinador-->
+                                            <option value="usuario">Usuario</option><!--Usuario-->
+                                    </select>
+                                </div>
+                                <div class="form-group" name="formulario">
+                                    <label>Recinto al que pertenece: </label>
+                                    <!--<select onchange="selectRecintos()" class="custom-select" id="listRecinto" name="SelectRecinto">
+                                    </select>-->
+                                    <input type="text" class="form-control" name="Recinto" placeholder="Recinto al que pertenece el usuario....">
+                                </div>
+                                <div class="form-group">
+                                    <label>ID_Recinto</label>
+                                    <input type="number" class="form-control" name="ID_Recinto" placeholder="Escribe el ID del Recinto....">
+                                </div>
+                                <!--<div class="form-group">
+                                    <label>ID_rol</label>
+                                    <input disabled class="form-control" id="inputBlock" name="ID_rol" placeholder="Selecciona un rol">
+                                </div>-->
+                                <div class="form-group">
+                                    <button class="btn btn-dark btn-block" id="Gdisabled">Guardar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>

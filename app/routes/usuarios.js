@@ -11,7 +11,7 @@ router.get('/addUsuarios', isLoggedIn, (req, res) => {
     res.render('usuarios/addUsuarios');
 });
 
-router.get('/', isLoggedIn, async (req, res) => {
+router.get('/',  async (req, res) => {
     const usuarios = await pool.query('SELECT * FROM usuarios');
     res.render('usuarios/listaUsuarios', { usuarios });
 });
@@ -21,7 +21,7 @@ router.get('/deleteUsuarios/:ID_emp', isLoggedIn, async (req, res) => {
     await pool.query('DELETE FROM usuarios WHERE ID_emp = ?', [ID_emp] );
                 //creamos mensaje
                 req.flash('completo', 'Usuario eliminado correctamente');
-    res.redirect('/usuarios');
+    res.redirect('/Administrador/usuarios');
 });
 
 router.get('/editUsuarios/:ID_emp', isLoggedIn, async (req, res) => {
@@ -37,19 +37,21 @@ router.post('/editUsuarios/:ID_emp', isLoggedIn, async (req, res) => {
         Nom_emp,
         Apellido_emp,
         usuario,
-        correo,
-        pass,
-        NomRol
-        //,ID_rol 
+        correo
+        //,pass
+        ,NomRol
+        ,Recinto,
+        ID_Recinto
     } = req.body;
     const newUsuario = { 
         Nom_emp,
         Apellido_emp,
         usuario,
-        correo,
-        pass,
-        NomRol
-        //,ID_rol
+        correo
+        //,pass
+        ,NomRol
+        ,Recinto,
+        ID_Recinto
     };
     
     try{
@@ -58,7 +60,7 @@ router.post('/editUsuarios/:ID_emp', isLoggedIn, async (req, res) => {
         //console.log(resultado);
             //creamos mensaje
             req.flash('completo', 'Usuario modificado correctamente');
-            res.redirect('/usuarios');
+            res.redirect('/Administrador/usuarios');
 
     }catch(error) {
         console.log(error);

@@ -1,20 +1,24 @@
+{{> navAdministrador}}
+
+<section class="home-section pt-4 mt-4">
+
 <div class="container mt-2">
 
     <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
         <li class="nav-item">
-             <a class="nav-link" href="/usuarios">USUARIOS</a>
+             <a class="nav-link" href="/Administrador/usuarios">USUARIOS</a>
+        </li>
+           <!--<li class="nav-item">
+                <a class="nav-link" href="/Administrador/roles">ROLES</a>
+            </li>-->
+            <!--<li class="nav-item">
+                <a class="nav-link" href="/Administrador/privilegios">PRIVILEGIOS</a>
+            </li>-->
+        <li class="nav-item">
+            <a class="nav-link active" href="/Administrador/recintos">RECINTOS</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/roles">ROLES</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/privilegios">PRIVILEGIOS</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link active" href="/recintos">RECINTOS</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/mp">MATERIA PRIMA</a>
+            <a class="nav-link" href="/Administrador/mp">MATERIA PRIMA</a>
         </li>
     </ul>
 
@@ -35,19 +39,22 @@
     {{/if}}
 
         <div class="row">
-        <a href="/recintos/addRecintos" class="btn btn-success mb-4">
-            <i class='bx bxs-plus-circle'></i>
-            Nuevo Recinto
-        </a>
-            <table class="table">
+            <div class="col">
+                <a href="/Administrador/recintos/addRecintos" class="btn btn-outline-success mb-4">
+                    <i class='bx bxs-plus-circle'></i>
+                    Nuevo Recinto
+                </a>
+            </div>
+        </div>
+
+<div class="justify-content-center row">
+    <div class="table-responsive-xl">
+        <table class="table table-responsive table-striped table-borderedtable-hover">
             <thead class="thead-dark">
                 <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Recinto</th>
                 <th scope="col">Ubicacion</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Apellido</th>
-                <th scope="col">Usuario</th>
                 <th colspan="2">Acciones</th>
                 </tr>
             </thead>
@@ -57,31 +64,34 @@
                 <th scope="row"> {{ ID_Recinto }} </th>
                 <td>{{Recinto}}</td>
                 <td>{{Ubicacion}}</td>
-                <td>{{Npatron}}</td>
-                <td>{{Apatron}}</td>
-                <td>{{usuario}}</td>
                 <td>
-                    <a href="/recintos/editRecintos/{{ ID_Recinto }}" class="btn btn-primary btn-sm">
+                    <a href="/Administrador/recintos/editRecintos/{{ ID_Recinto }}" class="btn btn-outline-primary btn-sm">
                         <i class='bx bx-edit-alt'></i>
                         Editar
                     </a>
                     
                 </td>
                 <td>
-                    <button onclick="popUpDelRecinto({{ ID_Recinto }})" class="btn btn-danger btn-sm">
+                    <button onclick="popUpDelRecinto({{ ID_Recinto }})" class="btn btn-outline-danger btn-sm">
                         <ion-icon name="trash-outline"></ion-icon>
                         Eliminar
                     </button>
                 </td>
                 </tr>
                 {{else}}
-                <div class="col-md-4 mx-auto">
+                <div class="mx-auto pb-4">
                     <div class="card card-body text-center">
-                        <p>No se encuentran recintos guardados</p>
+                        <p>No se encuentra registro de recintos</p>
                     </div>
                 </div>
                 {{/each}}
             </tbody>
             </table>
+            <caption class="pl-2 justify-content-center">Lista de recintos</caption>
         </div>
     </div>
+</div>
+
+</section>
+
+

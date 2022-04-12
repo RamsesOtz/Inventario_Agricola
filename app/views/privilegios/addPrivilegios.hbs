@@ -1,20 +1,24 @@
+{{> navAdministrador}}
+
+<section class="home-section pt-4 mt-4">
+
 <div class="container mt-2">
 
     <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
         <li class="nav-item">
-             <a class="nav-link" href="/usuarios">USUARIOS</a>
+             <a class="nav-link" href="/Administrador/usuarios">USUARIOS</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/roles">ROLES</a>
+            <a class="nav-link" href="/Administrador/roles">ROLES</a>
         </li>
         <li class="nav-item">
             <a class="nav-link active" href="#">PRIVILEGIOS</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/recintos">RECINTOS</a>
+            <a class="nav-link" href="/Administrador/recintos">RECINTOS</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/mp">MATERIA PRIMA</a>
+            <a class="nav-link" href="/Administrador/mp">MATERIA PRIMA</a>
         </li>
     </ul>
 
@@ -37,7 +41,7 @@
         <div class="row pt-4 mt-4">
             <div class="col-md-8 mx-auto">
 
-                <a href="/privilegios" class="btn btn-outline-dark btn-sm mb-4">
+                <a href="/Administraodr/privilegios" class="btn btn-outline-dark btn-sm mb-4">
                     <i class='bx bx-arrow-back'></i>
                     Regresar
                     </a>
@@ -47,7 +51,7 @@
                         NUEVO PRIVILEGIO
                     </div>
                     <div class="card-body">
-                        <form action="/privilegios/addPrivilegios" method="POST">
+                        <form action="/Administrador/privilegios/addPrivilegios" method="POST">
                             <div class="form-group">
                                 <label>Nombre del privilegio: </label>
                                 <input type="text" class="form-control" name="NomPriv" placeholder="Nombre del privilegio...." autofocus>
@@ -66,3 +70,6 @@
         </div>
         
     </div>
+
+</section>
+

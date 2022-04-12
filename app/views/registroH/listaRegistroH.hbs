@@ -1,0 +1,86 @@
+{{> navEmpleado}}
+
+<section class="home-section pt-4 mt-4">
+
+<div class="container mt-2">
+
+    {{#if completo}}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mx-auto">
+
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{completo}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+
+            <div class="row">
+                <div class="col">
+                    <a href="/Empleado/registroH/addRegistroH" class="btn btn-outline-success mb-4">
+                        <i class='bx bxs-plus-circle'></i>
+                        Añadir al inventario
+                    </a>
+                </div>
+            </div>
+
+        <div class="justify-content-center row">
+            <div class="table-responsive-xl">
+                <table class="table table-responsive table-striped table-borderedtable-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Descripciòn</th>
+                        <th scope="col">Medida</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Existencias</th>
+                        <th colspan="2">Registrado</th>
+                        <th colspan="2">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each productos}}
+                        <tr>
+                        <th>{{ ID_mpH }} </th>
+                        <td>{{Nom_mpH}}</td>
+                        <td class="text-justify">{{Desc_mpH}}</td>
+                        <td>{{Medida_mpH}}</td>
+                        <td>{{Cant_mpH}}</td>
+                        <td>{{StockH}}</td>
+                        <td></td>
+                        <td>{{timeago Date_HrEnviado}}</td>
+                        <td>
+                            <a href="/Empleado/registroH/editRegistroH/{{ ID_mpH }}" class="btn btn-outline-primary btn-sm">
+                                <i class='bx bx-edit-alt'></i>
+                                Editar
+                            </a>
+                            
+                        </td>
+                        <td>
+                            <button onclick="popUpDelRegistroH({{ ID_mpH }})" class="btn btn-outline-danger btn-sm">
+                                <ion-icon name="trash-outline"></ion-icon>
+                                Eliminar
+                            </button>
+                        </td>
+                        </tr>
+                        {{else}}
+                        <div class="col-md-8 mx-auto pb-4">
+                            <div class="card card-body text-center">
+                                <p>No hay materia prima en el inventario local</p>
+                            </div>
+                        </div>
+                        {{/each}}
+                    </tbody>
+                </table>
+                <caption class="pl-2 justify-content-center">Lista de materia prima en inventario local</caption>
+            </div>
+        </div>
+    </div>
+
+</section>

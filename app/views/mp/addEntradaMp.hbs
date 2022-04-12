@@ -1,99 +1,105 @@
-<div class="container mt-2">
+{{> navAdministrador}}
 
-    <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
-        <li class="nav-item">
-             <a class="nav-link" href="/usuarios">USUARIOS</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/roles">ROLES</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/privilegios">PRIVILEGIOS</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/recintos">RECINTOS</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link active" href="#">MATERIA PRIMA</a>
-        </li>
-    </ul>
+<section class="home-section pt-4 mt-4">
+    <div class="container mt-2">
 
-    {{#if completo}}
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 mx-auto">
+        <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link" href="/Administrador/usuarios">USUARIOS</a>
+            </li>
+            <!--<li class="nav-item">
+                <a class="nav-link" href="/Administrador/roles">ROLES</a>
+            </li>-->
+            <!--<li class="nav-item">
+                <a class="nav-link" href="/Administrador/privilegios">PRIVILEGIOS</a>
+            </li>-->
+            <li class="nav-item">
+                <a class="nav-link" href="/Administrador/recintos">RECINTOS</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="#">MATERIA PRIMA</a>
+            </li>
+        </ul>
 
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {{completo}}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+        {{#if completo}}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mx-auto">
+
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{completo}}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    {{/if}}
+        {{/if}}
 
-        <div class="row pt-4 mt-4">
-            <div class="col-md-8 mx-auto  pb-4 mb-4">
+            <div class="row pt-4 mt-4">
+                <div class="col-md-8 mx-auto  pb-4 mb-4">
 
-                <a href="/mp/listaEntradaMp" class="btn btn-outline-dark btn-sm mb-4">
-                    <i class='bx bx-arrow-back'></i>
-                    Regresar
-                    </a>
+                    <a href="/Administrador/mp/listaEntradaMp" class="btn btn-outline-dark btn-sm mb-4">
+                        <i class='bx bx-arrow-back'></i>
+                        Regresar
+                        </a>
 
-                <div class="card mt-2">
-                    <div class="card-header text-center">
-                        REGISTRAR ENRADA DE MATERIA PRIMA
-                    </div>
-                    <div class="card-body">
-                        <form action="/mp/addEntradaMp" method="POST">
-                            <div class="form-group">
-                                <label>Nombre de materia prima: </label>
-                                <input type="text" class="form-control" name="Nom_mp" placeholder="Nombre de materia prima...." autofocus>
-                            </div>
-                            <div class="form-group">
-                                <label>Descripción de materia prima: </label>
-                                <textarea name="Desc_mp" rows="2" class="form-control" placeholder="Descripcion de materia prima...."></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label>Tipo de Medidas</label>
-                                <!--<input type="number" value="{{ mp.Medida_materiaPrima }}" class="form-control" name="Medida_materiaPrima">-->
-                                <select onchange="getSelectValueT()" class="custom-select" id="listT" name="Medida_mp">
+                    <div class="card mt-2">
+                        <div class="card-header text-center">
+                            REGISTRAR ENRADA DE MATERIA PRIMA
+                        </div>
+                        <div class="card-body">
+                            <form action="/Administrador/mp/addEntradaMp" method="POST">
+                                <div class="form-group">
+                                    <label>Nombre de materia prima: </label>
+                                    <input type="text" class="form-control" name="Nom_mp" placeholder="Nombre de materia prima...." autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <label>Descripción de materia prima: </label>
+                                    <textarea name="Desc_mp" rows="2" class="form-control" placeholder="Descripcion de materia prima...."></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Tipo de Medidas</label>
+                                    <!--<input type="number" value="{{ mp.Medida_materiaPrima }}" class="form-control" name="Medida_materiaPrima">-->
+                                    <select onchange="getSelectValueTEP()" class="custom-select" id="listT">
                                         <option value=""> Selecciona el tipo de medida...</option>
+                                        <option value="pieza">Pieza</option>
                                         <option value="area">Area</option><!--Kilometros, Metros, Millas, Yarda, Pies: CUADRADOS-->
                                         <option value="longitud">Longitud</option><!--Kilometro, Metro, Centimetro, Milimetro, etc-->
                                         <option value="masa">Masa</option><!--Tonelada, Kilogramo, Gramo, Miligramo, etc-->
                                         <option value="volumen">Volumen</option><!--Litro, Mililitro-->
-                                </select>
-                            </div>
-                            <div class="form-group" id="formM">
-                                <label>Medida</label>
-                                <input disabled class="form-control" id="inputBlock" placeholder="Selecciona El tipo de medida">
-                            </div>
-                            <div class="form-group">
-                                <label>Cantidad: </label>
-                                <input type="number" class="form-control" name="Cant_mp" placeholder="Cantidad de materia prima....">
-                            </div>
-                            <div class="form-group">
-                                <label>Dejo Materia prima: </label>
-                                <input type="text" class="form-control" name="NomUs_dejo" placeholder="Nombre del usuario que dejo la materia prima....">
-                            </div>
-                            <div class="form-group">
-                                <label>Proveedor: </label>
-                                <input type="text" class="form-control" name="proveedor" placeholder="Nombre de la materia prima....">
-                            </div>
-                            <div class="form-group">
-                                <label>Fecha de entrega: </label>
-                                <input type="text" class="form-control" name="Date_Hr" placeholder="Nombre de materia prima....">
-                            </div>
-                            <div class="form-group">
-                                <button class="btn btn-dark btn-block">Guardar</button>
-                            </div>
-                        </form>
+                                    </select>
+                                </div>
+                                <div class="form-group" id="formM">
+                                    <label>Medida</label>
+                                    <input disabled class="form-control" id="inputBlock" placeholder="Selecciona El tipo de medida">
+                                </div>
+                                <div class="form-group">
+                                    <label>Cantidad: </label>
+                                    <input type="number" class="form-control" name="Cant_mp" placeholder="Cantidad de materia prima....">
+                                </div>
+                                <div class="form-group">
+                                    <label>Dejo Materia prima: </label>
+                                    <input type="text" class="form-control" name="NomUs_dejo" placeholder="Nombre del usuario que dejo la materia prima....">
+                                </div>
+                                <div class="form-group">
+                                    <label>Proveedor: </label>
+                                    <input type="text" class="form-control" name="proveedor" placeholder="Nombre de quien provee materia prima ya sea empresa u cualquier otro....">
+                                </div>
+                                <!--<div class="form-group">
+                                    <label>Fecha de entrega: </label>
+                                    <input type="text" class="form-control" name="Date_Hr" placeholder="Nombre de materia prima....">
+                                </div>-->
+                                <div class="form-group">
+                                    <button class="btn btn-dark btn-block">Guardar</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
+            
         </div>
-        
-    </div>
+</section>
+

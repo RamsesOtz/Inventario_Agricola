@@ -17,8 +17,8 @@ router.post('/addEntradaH', isLoggedIn, async (req, res) => {
         Desc_mpHE,
         Medida_mpHE,
         Cant_mpHE,
-        NomUs_dejo,
-        Date_HrEntrada
+        NomUs_dejo
+        //,Date_HrE
      } = req.body;
     const newEntradaH = { 
         Nom_mpHE,
@@ -26,16 +26,17 @@ router.post('/addEntradaH', isLoggedIn, async (req, res) => {
         Medida_mpHE,
         Cant_mpHE,
         NomUs_dejo,
-        Date_HrEntrada
+        ID_Recinto: req.user.ID_Recinto
+        //,Date_HrE
     };
     await pool.query('INSERT INTO entradaH set ? ', [newEntradaH]);
         //creamos mensaje
         req.flash('completo', 'Registro de materia prima en inventario con exito');
-    res.redirect('/entradaH');
+    res.redirect('/Coordinador/entradaH');
 });
 
 router.get('/', isLoggedIn, async (req, res) => {
-    const entradasH = await pool.query('SELECT * FROM entradaH');
+    const entradasH = await pool.query('SELECT * FROM entradaH WHERE ID_Recinto = ?', [req.user.ID_Recinto]);
     res.render('entradaH/listaEntradaH', { entradasH });
 });
 
@@ -44,7 +45,7 @@ router.get('/deleteEntradaH/:ID_entradaH', isLoggedIn, async (req, res) => {
     await pool.query('DELETE FROM entradaH WHERE ID_entradaH = ?', [ID_entradaH] );
                 //creamos mensaje
                 req.flash('completo', 'Registro de materia prima eliminado correctamente');
-    res.redirect('/entradaH');
+    res.redirect('/Coordinador/entradaH');
 });
 
 router.get('/editEntradaH/:ID_entradaH', isLoggedIn, async (req, res) => {
@@ -56,21 +57,21 @@ router.get('/editEntradaH/:ID_entradaH', isLoggedIn, async (req, res) => {
 
 router.post('/editEntradaH/:ID_entradaH', isLoggedIn, async (req, res) => {
     const { ID_entradaH } = req.params;
-    const { 
-        Nom_mpH,
-        Desc_mpH,
-        Medida_mpH,
-        Cant_mpH,
-        NomUs_dejo,
-        Date_HrEntrada
+    const {
+        Nom_mpHE,
+        Desc_mpHE,
+        Medida_mpHE,
+        Cant_mpHE,
+        NomUs_dejo
+        //, Date_HrE
     } = req.body;
     const newEntradaH = { 
-        Nom_mpH,
-        Desc_mpH,
-        Medida_mpH,
-        Cant_mpH,
-        NomUs_dejo,
-        Date_HrEntrada
+        Nom_mpHE,
+        Desc_mpHE,
+        Medida_mpHE,
+        Cant_mpHE,
+        NomUs_dejo
+        //,Date_HrE
     };
     
     try{
@@ -79,7 +80,7 @@ router.post('/editEntradaH/:ID_entradaH', isLoggedIn, async (req, res) => {
         //console.log(resultado);
             //creamos mensaje
             req.flash('completo', 'Registro de materia prima modificada correctamente');
-            res.redirect('/entradaH');
+            res.redirect('/Coordinador/entradaH');
 
     }catch(error) {
         console.log(error);

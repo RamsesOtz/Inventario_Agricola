@@ -1,14 +1,18 @@
+{{> navCoordinador}}
+
+<section class="home-section pt-4 mt-4">
+
 <div class="container mt-2">
 
     <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
         <li class="nav-item">
-             <a class="nav-link" href="/inventarioH">INVENTARIO</a>
+             <a class="nav-link" href="/Coordinador/inventarioH">INVENTARIO</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link active" href="/entradaH">ENTRADAS</a>
+            <a class="nav-link active" href="/Coordinador/entradaH">ENTRADAS</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/salidaH">SALIDAS</a>
+            <a class="nav-link" href="/Coordinador/salidaH">SALIDAS</a>
         </li>
     </ul>
 
@@ -28,12 +32,18 @@
     </div>
     {{/if}}
 
-        <div class="row">
-        <a href="/entradaH/addEntradaH" class="btn btn-success mb-4">
+    <div class="row">
+        <div class="col">
+        <a href="/Coordinador/entradaH/addEntradaH" class="btn btn-outline-success mb-4">
             <i class='bx bxs-plus-circle'></i>
             Registrar entrega
         </a> 
-            <table class="table">
+        </div>
+    </div>
+   
+<div class="justify-content-center row">
+    <div class="table-responsive-xl">
+        <table class="table table-responsive table-striped table-borderedtable-hover">
             <thead class="thead-dark">
                 <tr>
                 <th scope="col">ID</th>
@@ -56,31 +66,35 @@
                 <td>{{Cant_mpHE}}</td>
                 <td>{{NomUs_dejo}}</td>
                 <td>{{timeago Date_HrE}}</td>
-                <!--<td>
-                    <a href="/entradaH/editEntrada/{{ ID_entradaH }}" class="btn btn-primary btn-sm">
+                <td>
+                    <a href="/Coordinador/entradaH/editEntradaH/{{ ID_entradaH }}" class="btn btn-outline-primary btn-sm">
                         <i class='bx bx-edit-alt'></i>
                         Editar
                     </a>
-                    
-                </td>-->
+                </td>
                 <td>
-                    <button class="btn btn-danger btn-sm" onclick="popUpDelEH({{ID_entradaH}})">
+                    <button class="btn btn-outline-danger btn-sm" onclick="popUpDelEH({{ID_entradaH}})">
                         <ion-icon name="trash-outline"></ion-icon>
                         Eliminar
                     </button>
                 </td>
                 </tr>
                 {{else}}
-                <div class="col-md-4 mx-auto">
+                <div class="col-md-8 mx-auto pb-4">
                     <div class="card card-body text-center">
-                        <p>No se ha recibido materia prima</p>
+                        <p>No hay registros de materia prima entrante</p>
                     </div>
                 </div>
                 {{/each}}
             </tbody>
             </table>
+            <caption class="pl-2 justify-content-center">Registro de materia prima entrante</caption>
         </div>
+    </div>
 </div>
 
 
 </div>
+
+</section>
+

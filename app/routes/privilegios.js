@@ -19,10 +19,10 @@ router.post('/addPrivilegios', isLoggedIn, async (req, res) => {
     await pool.query('INSERT INTO privilegios set ? ', [newPrivilegio]);
         //creamos mensaje
         req.flash('completo', 'Privilegio creado correctamente');
-    res.redirect('/privilegios');
+    res.redirect('/Administrador/privilegios');
 });
 
-router.get('/', isLoggedIn, async (req, res) => {
+router.get('/', async (req, res) => {
     const privilegios = await pool.query('SELECT * FROM privilegios');
     console.log(privilegios);
     res.render('privilegios/listaPrivilegios', { privilegios });
@@ -33,7 +33,7 @@ router.get('/deletePrivilegios/:ID_priv', isLoggedIn, async (req, res) => {
     await pool.query('DELETE FROM privilegios WHERE ID_priv = ?', [ID_priv] );
         //creamos mensaje
         req.flash('completo', 'Privilegio eliminado correctamente');
-    res.redirect('/privilegios');
+    res.redirect('/Administrador/privilegios');
 });
 
 router.get('/editPrivilegios/:ID_priv', isLoggedIn, async (req, res) => {
@@ -53,6 +53,6 @@ router.post('/editPrivilegios/:ID_priv', isLoggedIn, async (req, res) => {
     await pool.query('UPDATE privilegios set ? WHERE ID_priv = ?', [newPrivilegio, ID_priv]);
         //creamos mensaje
         req.flash('completo', 'Privilegio modificado correctamente');
-    res.redirect('/privilegios');
+    res.redirect('/Administrador/privilegios');
 });
 module.exports = router;

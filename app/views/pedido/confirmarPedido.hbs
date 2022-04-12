@@ -1,0 +1,101 @@
+{{> navAdministrador}}
+
+<section class="home-section pt-4 mt-4">
+
+<div class="container mt-2">
+
+    <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+        <li class="nav-item">
+             <a class="nav-link" href="/Administrador/usuarios">USUARIOS</a>
+        </li>
+        <!--<li class="nav-item">
+            <a class="nav-link" href="/Administrador/roles">ROLES</a>
+        </li>-->
+        <!--<li class="nav-item">
+            <a class="nav-link" href="/Administrador/privilegios">PRIVILEGIOS</a>
+        </li>-->
+        <li class="nav-item">
+            <a class="nav-link" href="/Administrador/recintos">RECINTOS</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="#">MATERIA PRIMA</a>
+        </li>
+    </ul>
+
+    {{#if completo}}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mx-auto">
+
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{completo}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+
+        <div class="row pt-4 mt-4">
+            <div class="col-md-8 mx-auto  pb-4 mb-4">
+
+                <a href="/Administrador/pedido" class="btn btn-outline-dark btn-sm mb-4">
+                    <i class='bx bx-arrow-back'></i>
+                    Regresar
+                    </a>
+
+                <div class="card">
+                    <div class="card-header text-center">
+                        CONFIRMAR PEDIDO
+                    </div>
+                    <div class="card-body">
+                        <form action="/Administrador/pedido/confirmarPedido/{{ pedidoH.ID_pedidoH }}" method="POST">
+                             <div class="form-group">
+                                <label>ID: </label>
+                                <input type="text" disabled value="{{ pedidoH.ID_pedidoH }}" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Pedido: </label>
+                                <input type="text" value="{{ pedidoH.pedidoH }}" class="form-control" name="Nom_mpH">
+                            </div>
+                            <div class="form-group">
+                                <label>Descripción del pedido: </label>
+                                <input type="text" value="{{ pedidoH.Desc_pedido }}" class="form-control" name="Desc_mpH">
+                            </div>
+                             <div class="form-group">
+                                <label>Medida: </label>
+                                <input type="text" value="{{ pedidoH.MedidaHP }}" class="form-control" name="Medida_mpH">
+                            </div>
+                            <div class="form-group">
+                                <label>Cantidad: </label>
+                                <input type="number" value="{{ pedidoH.CantHP }}" class="form-control" name="Cant_mpH">
+                            </div>
+                            <div class="form-group">
+                                <label>Stock: </label>
+                                <input type="number" value="{{ pedidoH.StockHP }}" class="form-control" name="StockH">
+                            </div>
+                             <div class="form-group">
+                                <label>Estatus: </label>
+                                <input type="text" value="{{ pedidoH.EstatusHP }}" class="form-control" name="EstatusH">
+                            </div>
+                            <div class="form-group">
+                                <label>Descripción del estatus: </label>
+                                <input type="text" value="{{ pedidoH.Desc_EstatusHP }}" class="form-control" name="Desc_estatusH">
+                            </div>
+                            <div class="form-group">
+                                <label>ID_salida: </label>
+                                <input type="number" class="form-control" name="ID_salidaH">
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-dark btn-block">Confirmar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>

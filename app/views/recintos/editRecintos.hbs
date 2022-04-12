@@ -1,20 +1,24 @@
+{{> navAdministrador}}
+
+<section class="home-section pt-4 mt-4">
+
 <div class="container mt-2">
 
     <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
         <li class="nav-item">
-             <a class="nav-link" href="/usuarios">USUARIOS</a>
+             <a class="nav-link" href="/Administrador/usuarios">USUARIOS</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/roles">ROLES</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/privilegios">PRIVILEGIOS</a>
-        </li>
+           <!--<li class="nav-item">
+                <a class="nav-link" href="/Administrador/roles">ROLES</a>
+            </li>-->
+            <!--<li class="nav-item">
+                <a class="nav-link" href="/Administrador/privilegios">PRIVILEGIOS</a>
+            </li>-->
         <li class="nav-item">
             <a class="nav-link active" href="#">RECINTOS</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/mp">MATERIA PRIMA</a>
+            <a class="nav-link" href="/Administrador/mp">MATERIA PRIMA</a>
         </li>
     </ul>
 
@@ -37,7 +41,7 @@
         <div class="row pt-4 mt-4">
             <div class="col-md-8 mx-auto  pb-4 mb-4">
 
-                <a href="/recintos" class="btn btn-outline-dark btn-sm mb-4">
+                <a href="/Administrador/recintos" class="btn btn-outline-dark btn-sm mb-4">
                     <i class='bx bx-arrow-back'></i>
                     Regresar
                     </a>
@@ -47,7 +51,7 @@
                         EDITAR RECINTO
                     </div>
                     <div class="card-body">
-                        <form action="/recintos/editRecintos/{{ recinto.ID_Recinto }}" method="POST">
+                        <form action="/Administrador/recintos/editRecintos/{{ recinto.ID_Recinto }}" method="POST">
                              <div class="form-group">
                                 <label>ID: </label>
                                 <input type="text" disabled value="{{ recinto.ID_Recinto }}" class="form-control">
@@ -60,18 +64,6 @@
                                 <label>Ubicacion del recinto: </label>
                                 <input type="text" value="{{ recinto.Ubicacion }}" class="form-control" name="Ubicacion" autofocus>
                             </div>
-                             <div class="form-group">
-                                <label>Nombre del encargado: </label>
-                                <input type="text" value="{{ recinto.Npatron }}" class="form-control" name="Npatron" autofocus>
-                            </div>
-                             <div class="form-group">
-                                <label>Apellido del encargado: </label>
-                                <input type="text" value="{{ recinto.Apatron }}" class="form-control" name="Apatron" autofocus>
-                            </div>
-                             <div class="form-group">
-                                <label>Nombre del usuario: </label>
-                                <input type="text" value="{{ recinto.usuario }}" class="form-control" name="usuario" autofocus>
-                            </div>
                             <div class="form-group">
                                 <button class="btn btn-dark btn-block">Guardar</button>
                             </div>
@@ -81,3 +73,6 @@
             </div>
         </div>
     </div>
+
+</section>
+

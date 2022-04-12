@@ -1,14 +1,18 @@
+{{> navCoordinador}}
+
+<section class="home-section pt-4 mt-4">
+
 <div class="container mt-2">
 
     <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
         <li class="nav-item">
-             <a class="nav-link active" href="/inventarioH">INVENTARIO</a>
+             <a class="nav-link active" href="/Coordinador/inventarioH">INVENTARIO</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/entradaH">ENTRADAS</a>
+            <a class="nav-link" href="/Coordinador/entradaH">ENTRADAS</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/salidaH">SALIDAS</a>
+            <a class="nav-link" href="/Coordinador/salidaH">SALIDAS</a>
         </li>
     </ul>
 
@@ -27,13 +31,53 @@
         </div>
     </div>
     {{/if}}
-
+    {{#if mensaje}}
+    <div class="container">
         <div class="row">
-        <a href="/inventarioH/addInventarioH" class="btn btn-success mb-4">
-            <i class='bx bxs-plus-circle'></i>
-            Pedir Materia Prima
+            <div class="mx-auto">
+
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <i class='bx bx-error bx-tada'></i>
+                    {{mensaje}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+    {{#if warning}}
+    <div class="container">
+        <div class="row">
+            <div class="mx-auto">
+
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <i class="fa-solid fa-boxes-stacked fa-lg fa-bounce"></i>
+                {{warning}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+    
+
+<div class="row">
+    <div class="col">
+        <a href="/Coordinador/inventarioH/listaPedidoHRea" class="btn btn-outline-dark mb-4">
+            <i class='bx bxs-book-open' ></i>
+            Mis pedidos
         </a>
-            <table class="table">
+    </div>
+</div>
+
+        
+<div class="justify-content-center row">
+    <div class="table-responsive-xl">
+        <table class="table table-responsive table-striped table-borderedtable-hover">
             <thead class="thead-dark">
                 <tr>
                 <th scope="col">ID</th>
@@ -42,10 +86,7 @@
                 <th scope="col">Medida</th>
                 <th scope="col">Cantidad</th>
                 <th scope="col">Existencias</th>
-                <th scope="col">Estatus</th>
-                <th scope="col">ID_entrada</th>
-                <th scope="col">ID_salida</th>
-                <th colspan="2">Peticion realizada</th>
+                <!--<th scope="col">Estatus</th>-->
                 <th colspan="2">Acciones</th>
                 </tr>
             </thead>
@@ -58,35 +99,37 @@
                 <td>{{Medida_mpH}}</td>
                 <td>{{Cant_mpH}}</td>
                 <td>{{StockH}}</td>
-                <td>{{EstatusH}}</td>
-                <td>{{ID_entradaH}}</td>
-                <td>{{ID_salidaH}}</td>
-                <td>{{timeago Date_HrEnviado}}</td>
+                <!--<td>{{EstatusH}}</td>-->
                 <td>
-                    <a href="/inventarioH/editInventarioH/{{ ID_mpH }}" class="btn btn-primary btn-sm">
-                        <i class='bx bx-edit-alt'></i>
-                        Editar
+                    <a href="/Coordinador/inventarioH/moverMPH/{{ ID_mpH }}" class="btn btn-outline-primary btn-sm">
+                        <ion-icon name="move-outline"></ion-icon>
+                        Mover
                     </a>
-                    
                 </td>
                 <td>
-                    <button class="btn btn-danger btn-sm" onclick="popUpDelIH({{ID_mpH}})">
-                        <ion-icon name="trash-outline"></ion-icon>
-                        Eliminar
+                    <button class="btn btn-outline-danger btn-sm" onclick="popUpRegresar({{ID_mpH}})">
+                        <i class='bx bx-redo bx-flip-horizontal'></i>
+                        Regresar
                     </button>
+                </td>
                 </td>
                 </tr>
                 {{else}}
-                <div class="col-md-4 mx-auto">
+                <div class="col-md-12 mx-auto pb-4">
                     <div class="card card-body text-center">
-                        <p>No se encuentran materiales en el inventario</p>
+                        <p>No se encuentra materia prima en el inventario local</p>
                     </div>
                 </div>
                 {{/each}}
             </tbody>
             </table>
+            <caption class="pl-2 justify-content-center">Lista de materia prima en inventario local</caption>
         </div>
+    </div>
 </div>
 
 
 </div>
+
+</section>
+

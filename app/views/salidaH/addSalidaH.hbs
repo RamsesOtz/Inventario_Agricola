@@ -1,0 +1,103 @@
+{{> navCoordinador}}
+
+<section class="home-section pt-4 mt-4">
+
+<div class="container mt-2">
+
+    <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+        <li class="nav-item">
+             <a class="nav-link" href="/Coordinador/inventarioH">INVENTARIO</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Coordinador/entradaH">ENTRADAS</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="#">SALIDAS</a>
+        </li>
+    </ul>
+
+
+    {{#if completo}}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mx-auto">
+
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{completo}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+
+        <div class="row pt-4 mt-4">
+            <div class="col-md-8 mx-auto  pb-4 mb-4">
+
+                <a href="/Coordinador/salidaH" class="btn btn-outline-dark btn-sm mb-4">
+                    <i class='bx bx-arrow-back'></i>
+                    Regresar
+                    </a>
+
+                <div class="card">
+                    <div class="card-header text-center">
+                        REGISTRAR SALIDA
+                    </div>
+                    <div class="card-body">
+                        <form action="/Coordinador/salidaH/addSalidaH" method="POST">
+                            <div class="form-group">
+                                <label>Nombre de materia prima: </label>
+                                <input type="text" class="form-control" name="Nom_mpHS" placeholder="Escribe el nombre de la materia prima...." autofocus>
+                            </div>
+                            <div class="form-group">
+                                <label>Tipo de Medidas</label>
+                                <!--<input type="number" value="{{ mp.Medida_materiaPrima }}" class="form-control" name="Medida_materiaPrima">-->
+                                <select onchange="getSelectValueTSH()" class="custom-select" id="listTSH">
+                                    <option value=""> Selecciona el tipo de medida...</option>
+                                    <option value="pieza">Pieza</option>
+                                    <option value="area">Area</option><!--Kilometros, Metros, Millas, Yarda, Pies: CUADRADOS-->
+                                    <option value="longitud">Longitud</option><!--Kilometro, Metro, Centimetro, Milimetro, etc-->
+                                    <option value="masa">Masa</option><!--Tonelada, Kilogramo, Gramo, Miligramo, etc-->
+                                    <option value="volumen">Volumen</option><!--Litro, Mililitro-->
+                                </select>
+                            </div>
+                            <div class="form-group" id="formMSH">
+                                <label>Medida</label>
+                                <!--<input type="number" value="{{ mp.Medida_materiaPrima }}" class="form-control" name="Medida_materiaPrima">-->
+                                <input disabled class="form-control" id="inputBlock" placeholder="Selecciona El tipo de medida">
+                            </div>
+                            <div class="form-group">
+                                <label>Cantidad: </label>
+                                <input type="number" class="form-control" name="Cant_mpHS" placeholder="Ingresa la cantidad que se pidio....">
+                            </div>
+                            <div class="form-group">
+                                <label>Usuario del solicitante: </label>
+                                <input type="text" class="form-control" name="NomUs_solicito" placeholder="Escribe el nombre del usuario que solicito la materia prima....">
+                            </div>
+                            <div class="form-group">
+                                <label>Usuario que autorizo: </label>
+                                <input type="text" class="form-control" name="NomUs_autorizo" placeholder="Escribe el nombre del usuario que autorizo en envio de la materia prima.....">
+                            </div>
+                            <div class="form-group">
+                                <label>Usuario que llevo: </label>
+                                <input type="text" class="form-control" name="NomUs_llevo" placeholder="Escribe el nombre del usuario que llevo la  materia prima....">
+                            </div>
+                            <!--<div class="form-group">
+                                <label>Fecha de salida: </label>
+                                <input type="text" class="form-control" name="Date_HrS">
+                            </div>-->
+                            <!--QUITAR-->
+                            <div class="form-group">
+                                <button class="btn btn-dark btn-block">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+

@@ -42,33 +42,29 @@ app.use(express.json());
 app.use(passport.initialize());
 app.use(passport.session());
 
-//sesion para guardar los datos
-
-
 //Variables globales
 app.use((req, res, next) => {
     //el mensaje guardado estara disponible en todas las visatas
     app.locals.completo = req.flash('completo');
     app.locals.mensaje = req.flash('mensaje');
+    app.locals.warning = req.flash('warning');
     app.locals.user = req.user;
-    app.locals.rol = req.rol;
     next();
 });
 
 //Rutas
 app.use(require('./routes/routes'));
 app.use(require('./routes/authentication'));
-//app.use('/Inicio', require('./routes/inicio'));
-//app.use('/perfil', require('./routes/perfil'));
-app.use('/usuarios', require('./routes/usuarios'));
-app.use('/roles', require('./routes/roles'));
-app.use('/privilegios', require('./routes/privilegios'));
-app.use('/recintos', require('./routes/recintos'));
-app.use('/mp', require('./routes/mp'));
-app.use('/pedido', require('./routes/pedido'));
-app.use('/inventarioH', require('./routes/inventarioH'));
-app.use('/entradaH', require('./routes/entradaH'));
-//app.use('/salidaH', require('./routes/salidaH'));
+app.use('/Administrador/usuarios', require('./routes/usuarios'));
+app.use('/Administrador/roles', require('./routes/roles'));
+app.use('/Administrador/privilegios', require('./routes/privilegios'));
+app.use('/Administrador/recintos', require('./routes/recintos'));
+app.use('/Administrador/mp', require('./routes/mp'));
+app.use('/Administrador/pedido', require('./routes/pedido'));
+app.use('/Coordinador/inventarioH', require('./routes/inventarioH'));
+app.use('/Coordinador/entradaH', require('./routes/entradaH'));
+app.use('/Coordinador/salidaH', require('./routes/salidaH'));
+app.use('/Empleado/registroH', require('./routes/registroH'));
 
 //Public
 app.use(express.static(path.join(__dirname, 'public')));

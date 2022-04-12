@@ -1,17 +1,22 @@
+{{> navAdministrador}}
+
+<section class="home-section pt-4 mt-4">
+
 <div class="container mt-2">
 
     <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
         <li class="nav-item">
-             <a class="nav-link" href="/usuarios">USUARIOS</a>
+             <a class="nav-link" href="/Administrador/usuarios">USUARIOS</a>
+        </li>
+        <!--<li class="nav-item">
+            <a class="nav-link" href="/Administrador/roles">ROLES</a>
+        </li>-->
+        <!--<li class="nav-item">
+            <a class="nav-link" href="/Administrador/privilegios">PRIVILEGIOS</a>
+        </li>-->
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/roles">ROLES</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/privilegios">PRIVILEGIOS</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/RECINTOS">RECINTOS</a>
+            <a class="nav-link" href="/Administrador/RECINTOS">RECINTOS</a>
         </li>
         <li class="nav-item">
             <a class="nav-link active" href="#">MATERIA PRIMA</a>
@@ -37,7 +42,7 @@
         <div class="row pt-4 mt-4">
             <div class="col-md-8 mx-auto  pb-4 mb-4">
 
-                <a href="/mp" class="btn btn-outline-dark btn-sm mb-4">
+                <a href="/Administrador/mp" class="btn btn-outline-dark btn-sm mb-4">
                     <i class='bx bx-arrow-back'></i>
                     Regresar
                     </a>
@@ -47,7 +52,7 @@
                         EDITAR MATERIA PRIMA
                     </div>
                     <div class="card-body">
-                        <form action="/mp/editMp/{{ mp.ID_materiaPrima }}" method="POST">
+                        <form action="/Administrador/mp/editMp/{{ mp.ID_materiaPrima }}" method="POST">
                              <div class="form-group">
                                 <label>ID: </label>
                                 <input type="number" disabled value="{{ mp.ID_materiaPrima }}" class="form-control" name="ID_materiaPrima">
@@ -63,8 +68,9 @@
                             <div class="form-group">
                                 <label>Tipo de Medidas<b id="txtT"></b></label>
                                 <!--<input type="number" value="{{ mp.Medida_materiaPrima }}" class="form-control" name="Medida_materiaPrima">-->
-                                <select onchange="getSelectValueT()" class="custom-select" id="listT" name="Medida_materiaPrima">
+                                <select onchange="getSelectValueT()" class="custom-select" id="listT">
                                         <option value=""> Selecciona el tipo de medida...</option>
+                                        <option value="pieza">Pieza</option>
                                         <option value="area">Area</option><!--Kilometros, Metros, Millas, Yarda, Pies: CUADRADOS-->
                                         <option value="longitud">Longitud</option><!--Kilometro, Metro, Centimetro, Milimetro, etc-->
                                         <option value="masa">Masa</option><!--Tonelada, Kilogramo, Gramo, Miligramo, etc-->
@@ -78,16 +84,12 @@
                             </div>
                             <div class="form-group">
                                 <label>Cantidad: </label>
-                                <input type="number" value="{{ mp.Cant_materiaPrima }}" class="form-control" name="Cant_materiaPrima">
+                                <input type="number" value="{{ mp.Cant_materiaPrima }}" class="form-control" name="Cant_materiaPrima" id="cant">
                             </div>
                             <!--QUITAR-->
                             <div class="form-group">
                                 <label>Stock: </label>
-                                <input type="number" value="{{ mp.stock }}" class="form-control" name="stock">
-                            </div>
-                            <div class="form-group">
-                                <label>Estatus: </label>
-                                <input type="number" value="{{ mp.estatus }}" class="form-control" name="estatus">
+                                <input type="number" value="{{ mp.stock }}" class="form-control" name="stock" id="copycant">
                             </div>
                             <!--QUITAR-->
                             <div class="form-group">
@@ -99,3 +101,6 @@
             </div>
         </div>
     </div>
+
+</section>
+

@@ -1,17 +1,21 @@
+{{> navAdministrador}}
+
+<section class="home-section pt-4 mt-4">
+
 <div class="container mt-2">
 
     <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
         <li class="nav-item">
-             <a class="nav-link" href="/usuarios">USUARIOS</a>
+             <a class="nav-link" href="/Administrador/usuarios">USUARIOS</a>
         </li>
+        <!--<li class="nav-item">
+            <a class="nav-link" href="/Administrador/roles">ROLES</a>
+        </li>-->
+        <!--<li class="nav-item">
+            <a class="nav-link" href="/Administrador/privilegios">PRIVILEGIOS</a>
+        </li>-->
         <li class="nav-item">
-            <a class="nav-link" href="/roles">ROLES</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/privilegios">PRIVILEGIOS</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/recintos">RECINTOS</a>
+            <a class="nav-link" href="/Administrador/recintos">RECINTOS</a>
         </li>
         <li class="nav-item">
             <a class="nav-link active" href="#">MATERIA PRIMA</a>
@@ -34,14 +38,14 @@
     </div>
     {{/if}}
 
-            <a href="/mp" class="btn btn-outline-dark btn-sm mb-4">
+            <a href="/Administrador/mp" class="btn btn-outline-dark btn-sm mb-4">
                 <i class='bx bx-arrow-back'></i>
                 Regresar
             </a>
 
             <div class="row">
                 <div class="col">
-                    <a href="/mp/addEntradaMp" class="btn btn-outline-success mb-4">
+                    <a href="/Administrador/mp/addEntradaMp" class="btn btn-outline-success mb-4">
                         <i class='bx bxs-plus-circle'></i>
                         Registrar entrada
                     </a>
@@ -80,7 +84,7 @@
                         <td class="text-center">{{proveedor}}</td>
                         <td class="text-center">{{timeago Date_Hr}}</td>
                         <td>
-                            <a href="/mp/editEntradaMp/{{ ID_entradaMp }}" class="btn btn-outline-primary btn-sm">
+                            <a href="/Administrador/mp/editEntradaMp/{{ ID_entradaMp }}" class="btn btn-outline-primary btn-sm">
                                 <i class='bx bx-edit-alt'></i>
                                 Editar
                             </a>
@@ -94,17 +98,17 @@
                         </td>
                         </tr>
                         {{else}}
-                        <div class="col-md-4 mx-auto">
+                        <div class="col-md-8 mx-auto pb-4">
                             <div class="card card-body text-center">
-                                <p>No hay registro de materia prima</p>
+                                <p>No hay registros de materia prima entrante</p>
                             </div>
                         </div>
                         {{/each}}
                     </tbody>
                 </table>
-            </div>
-            <div class="row">
                 <caption class="pl-2 justify-content-center">Registro de materia prima entrante</caption>
             </div>
         </div>
     </div>
+
+</section>

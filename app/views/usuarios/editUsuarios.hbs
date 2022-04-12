@@ -1,20 +1,24 @@
+{{> navAdministrador}}
+
+<section class="home-section pt-4 mt-4">
+
 <div class="container mt-2">
 
     <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
         <li class="nav-item">
              <a class="nav-link active" href="#">USUARIOS</a>
         </li>
+           <!--<li class="nav-item">
+                <a class="nav-link" href="/Administrador/roles">ROLES</a>
+            </li>-->
+            <!--<li class="nav-item">
+                <a class="nav-link" href="/Administrador/privilegios">PRIVILEGIOS</a>
+            </li>-->
         <li class="nav-item">
-            <a class="nav-link" href="/roles">ROLES</a>
+            <a class="nav-link" href="/Administrador/recintos">RECINTOS</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/privilegios">PRIVILEGIOS</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/recintos">RECINTOS</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/mp">MATERIA PRIMA</a>
+            <a class="nav-link" href="/Administrador/mp">MATERIA PRIMA</a>
         </li>
     </ul>
 
@@ -37,7 +41,7 @@
         <div class="row pt-4 mt-4">
             <div class="col-md-8 mx-auto pb-4 mb-4">
 
-                <a href="/usuarios" class="btn btn-outline-dark btn-sm mb-4">
+                <a href="/Administrador/usuarios" class="btn btn-outline-dark btn-sm mb-4">
                     <i class='bx bx-arrow-back'></i>
                     Regresar
                     </a>
@@ -47,7 +51,7 @@
                         EDITAR USUARIO
                     </div>
                     <div class="card-body">
-                        <form action="/usuarios/editUsuarios/{{ usuario.ID_emp }}" method="POST">
+                        <form action="/Administrador/usuarios/editUsuarios/{{ usuario.ID_emp }}" method="POST">
                             <div class="form-group">
                                 <label>ID: </label>
                                 <input type="text" disabled value="{{ usuario.ID_emp }}" class="form-control" name="ID_emp">
@@ -61,6 +65,18 @@
                                 <input type="text" value="{{ usuario.Apellido_emp }}" class="form-control" name="Apellido_emp">
                             </div>
                             <div class="form-group">
+                                <label>Nombre de usuario: </label>
+                                <input type="text" value="{{ usuario.usuario }}" class="form-control" name="usuario">
+                            </div>
+                            <div class="form-group">
+                                <label>Correo electronico: </label>
+                                <input type="email" value="{{ usuario.correo }}" class="form-control" name="correo">
+                            </div>
+                            <!--<div class="form-group">
+                                <label>Contraseña: *</label>
+                                <input type="text" class="form-control" name="pass" placeholder="ingresa una nueva contraseña...">
+                            </div>-->
+                            <div class="form-group">
                                 <label>Roles</label>
                                 <select onchange="getSelectValueRol()" class="form-control" id="listRol" name="NomRol">
                                     <option value=""> Asigna un rol al usuario...</option>
@@ -70,16 +86,12 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Nombre de usuario: </label>
-                                <input type="text" value="{{ usuario.usuario }}" class="form-control" name="usuario">
+                                <label>Recinto: </label>
+                                <input type="text" value="{{ usuario.Recinto }}" class="form-control" name="Recinto">
                             </div>
                             <div class="form-group">
-                                <label>Correo electronico: </label>
-                                <input type="email" value="{{ usuario.correo }}" class="form-control" name="correo">
-                            </div>
-                            <div class="form-group">
-                                <label>Contraseña: </label>
-                                <input type="text" value="{{ usuario.pass }}" class="form-control" name="pass">
+                                <label>ID_Recinto</label>
+                                   <input type="text" value="{{ usuario.ID_Recinto }}" class="form-control" name="ID_Recinto">
                             </div>
                                 <button class="btn btn-dark btn-block" onclick="popUpEditUs({{ ID_emp }})">Guardar</button>
                             </div>
@@ -89,3 +101,6 @@
             </div>
         </div>
     </div>
+
+</section>
+

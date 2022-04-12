@@ -1,0 +1,88 @@
+{{> navCoordinador}}
+
+<section class="home-section pt-4 mt-4">
+    {{#if mensaje}}
+    <div class="container">
+        <div class="row">
+            <div class="mx-auto">
+
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <i class='bx bx-error bx-tada'></i>
+                    {{mensaje}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+    {{#if warning}}
+    <div class="container">
+        <div class="row">
+            <div class="mx-auto">
+
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <i class="fa-solid fa-boxes-stacked fa-lg fa-bounce"></i>
+                {{warning}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+
+                <a href="/Coordinador/inventarioH" class="btn btn-outline-dark btn-sm mb-4">
+                    <i class='bx bx-arrow-back'></i>
+                    Regresar
+                </a>
+
+                <div class="card mt-2">
+                    <div class="card-header text-center">
+                        MOVIMIENTO DE MATERIA PRIMA
+                    </div>
+                    <div class="card-body">
+                        <form action="/Coordinador/inventarioH/moverMPH/{{ inventarioH.ID_mpH }}" method="POST">
+                            <!--<div class="form-group">
+                                <label>ID: </label>
+                                <input type="number" class="form-control" name="ID_mpH" value="{{ inventarioH.ID_mpH }}" disabled>
+                            </div>-->
+                            <div class="form-group">
+                                <label>Nombre de materia prima: </label>
+                                <input type="text" class="form-control" name="Nom_mpH" value="{{ inventarioH.Nom_mpH }}" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label>Medida</label>
+                                <input class="form-control" name="Medida_mpH" value="{{ inventarioH.Medida_mpH }}" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label>Cantidad disponible en inventario local:</label>
+                                <input type="number" class="form-control" value="{{ inventarioH.StockH }}" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label>Cantidad: </label>
+                                <input type="number" class="form-control" name="Cant_mpH" value="0" id="cant">
+                            </div>
+                            <!--QUITAR-->
+                            <div class="form-group">
+                                <label>Existencias: </label>
+                                <input type="number" class="form-control" name="StockH" value="0" id="copycant">
+                            </div>
+                            <!--QUITAR-->
+                            <div class="form-group">
+                                <button class="btn btn-dark btn-block">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+</section>

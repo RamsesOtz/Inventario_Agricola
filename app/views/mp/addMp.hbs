@@ -94,22 +94,24 @@
         
     </div>-->
 
+{{> navAdministrador}}
 
+<section class="home-section pt-4 mt-4">
 
     <div class="container mt-2">
 
     <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
         <li class="nav-item">
-             <a class="nav-link" href="/usuarios">USUARIOS</a>
+             <a class="nav-link" href="#">USUARIOS</a>
         </li>
+        <!--<li class="nav-item">
+            <a class="nav-link" href="#">ROLES</a>
+        </li>-->
+        <!--<li class="nav-item">
+            <a class="nav-link" href="#">PRIVILEGIOS</a>
+        </li>-->
         <li class="nav-item">
-            <a class="nav-link" href="/roles">ROLES</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/privilegios">PRIVILEGIOS</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/recintos">RECINTOS</a>
+            <a class="nav-link" href="#">RECINTOS</a>
         </li>
         <li class="nav-item">
             <a class="nav-link active" href="#">MATERIA PRIMA</a>
@@ -135,17 +137,17 @@
         <div class="row pt-4 mt-4">
             <div class="col-md-8 mx-auto  pb-4 mb-4">
 
-                <a href="/mp/listaEntradaMp" class="btn btn-outline-dark btn-sm mb-4">
+                <!--<a href="/Administrador/mp/listaEntradaMp" class="btn btn-outline-dark btn-sm mb-4">
                     <i class='bx bx-arrow-back'></i>
                     Regresar
-                    </a>
+                    </a>-->
 
                 <div class="card mt-2">
                     <div class="card-header text-center">
                         AÑADIR AL INVENTARIO
                     </div>
                     <div class="card-body">
-                        <form action="/mp/addMp" method="POST">
+                        <form action="/Administrador/mp/addMp" method="POST">
                             <div class="form-group">
                                 <label>Nombre de materia prima: </label>
                                 <input type="text" class="form-control" name="Nom_materiaPrima" placeholder="Nombre de materia prima...." autofocus>
@@ -159,6 +161,7 @@
                                 <!--<input type="number" value="{{ mp.Medida_materiaPrima }}" class="form-control" name="Medida_materiaPrima">-->
                                 <select onchange="getSelectValueT()" class="custom-select" id="listT">
                                         <option value=""> Selecciona el tipo de medida...</option>
+                                        <option value="pieza">Pieza</option>
                                         <option value="area">Area</option><!--Kilometros, Metros, Millas, Yarda, Pies: CUADRADOS-->
                                         <option value="longitud">Longitud</option><!--Kilometro, Metro, Centimetro, Milimetro, etc-->
                                         <option value="masa">Masa</option><!--Tonelada, Kilogramo, Gramo, Miligramo, etc-->
@@ -171,16 +174,12 @@
                             </div>
                             <div class="form-group">
                                 <label>Cantidad: </label>
-                                <input type="number" class="form-control" name="Cant_materiaPrima" placeholder="Cantidad de materia prima....">
+                                <input type="number" class="form-control" name="Cant_materiaPrima" placeholder="Cantidad de materia prima...." id="cant">
                             </div>
                             <!--QUITAR-->
                             <div class="form-group">
                                 <label>Stock: </label>
-                                <input type="number" class="form-control" name="stock">
-                            </div>
-                            <div class="form-group">
-                                <label>Estatus: </label>
-                                <input type="number" class="form-control" name="estatus">
+                                <input type="number" class="form-control" name="stock" placeholder="Existencias de materia prima...." id="copycant">
                             </div>
                             <!--QUITAR-->
                             <div class="form-group">
@@ -193,3 +192,6 @@
         </div>
         
     </div>
+
+</section>
+

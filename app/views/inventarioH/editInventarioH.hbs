@@ -1,3 +1,7 @@
+{{> navAdministrador}}
+
+<section class="home-section pt-4 mt-4">
+
 <div class="container mt-2">
 
     <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
@@ -5,10 +9,10 @@
              <a class="nav-link active" href="#">INVENTARIO</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/entradaH">ENTRADAS</a>
+            <a class="nav-link" href="/Coordinador/entradaH">ENTRADAS</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/salidaH">SALIDAS</a>
+            <a class="nav-link" href="/Coordinador/salidaH">SALIDAS</a>
         </li>
     </ul>
 
@@ -32,7 +36,7 @@
         <div class="row pt-4 mt-4">
             <div class="col-md-8 mx-auto  pb-4 mb-4">
 
-                <a href="/inventarioH" class="btn btn-outline-dark btn-sm mb-4">
+                <a href="/Coordinador/inventarioH" class="btn btn-outline-dark btn-sm mb-4">
                     <i class='bx bx-arrow-back'></i>
                     Regresar
                     </a>
@@ -42,7 +46,7 @@
                         EDITAR MATERIA PRIMA
                     </div>
                     <div class="card-body">
-                        <form action="/inventarioH/editInventarioH/{{ inventarioH.ID_mpH }}" method="POST">
+                        <form action="/Coordinador/inventarioH/editInventarioH/{{ inventarioH.ID_mpH }}" method="POST">
                              <div class="form-group">
                                 <label>ID Materia Prima: </label>
                                 <input type="number" disabled value="{{ inventarioH.ID_mpH }}" class="form-control" name="ID_mpH">
@@ -82,15 +86,11 @@
                             </div>
                             <div class="form-group">
                                 <label>Estatus: </label>
-                                <input type="number" value="{{ inventarioH.EstatusH }}" class="form-control" name="EstatusH">
+                                <input type="text" value="{{ inventarioH.EstatusH }}" class="form-control" name="EstatusH">
                             </div>
                              <div class="form-group">
                                 <label>ID Entrada: </label>
                                 <input type="number" disabled value="{{ inventarioH.ID_entradaH }}" class="form-control" name="ID_entradaH">
-                            </div>
-                             <div class="form-group">
-                                <label>ID Salida: </label>
-                                <input type="number" disabled value="{{ inventarioH.ID_salidaH }}" class="form-control" name="ID_salidaH">
                             </div>
                             <!--QUITAR-->
                             <div class="form-group">
@@ -102,3 +102,6 @@
             </div>
         </div>
     </div>
+
+</section>
+

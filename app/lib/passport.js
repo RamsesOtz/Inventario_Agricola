@@ -9,34 +9,33 @@ const bcy = require('../lib/bcy');
 
 ///Iniciar sesion///
 passport.use('local.iniciar', new LocalStrategy({
-    usernameField: 'usuario',
-    passwordField: 'pass',
-    passReqToCallback: true
-}, async (req, usuario, pass, done) => {
-    //console.log(req.body);
-
-    const filas = await pool.query('SELECT * FROM usuarios WHERE usuario = ?', [usuario]);
-    //console.log(filas);
-    //validamos usuario
-    if(filas.length > 0){
-        const user = filas[0];
-        //console.log(user);
-
-        //validamos contraseña
-        const passValida = await bcy.desencriptar(pass, user.pass);
-        const rol = user.NomRol;
-
+        usernameField: 'usuario',
+        passwordField: 'pass',
+        passReqToCallback: true
+    }, async (req, usuario, pass, done) => {
+        //console.log(req.body);
+    
+        var filas = await pool.query('SELECT * FROM usuarios WHERE usuario = ?', [usuario]);
+        //console.log(filas);
+        //validamos usuario
+        if(filas.length > 0){
+            var user = filas[0];
+            //console.log(user);
+    
+            //validamos contraseña
+            var passValida = await bcy.desencriptar(pass, user.pass);
+    
         if(passValida){
-            done(null, user, rol, req.flash('completo', 'Bienvenido: ' + user.usuario + ' !!!!'));
-        }else{
-            //si no coinciden las contraseñass
-            done(null, false, req.flash('mensaje', 'Contraseña incorrecta :c'));
+                done(null, user, req.flash('completo', 'Bienvenido: ' + user.usuario));
+            }else{
+                //si no coinciden las contraseñass
+                done(null, false, req.flash('mensaje', 'Contraseña incorrecta :c'));
+            }
+        }else{//si no encontro nada
+            return done(null, false, req.flash('mensaje', 'El usuario no existe :s'));
         }
-    }else{//si no encontro nada
-        return done(null, false, req.flash('mensaje', 'El usuario no existe :s'));
-    }
-
-}));
+    
+    }));
 
 //////registrar//////
 //realzamos la autenticacion de manera local (la base de datos que tenemos)
@@ -46,27 +45,31 @@ passport.use('local.registrar', new LocalStrategy ({
     passwordField: 'pass',
     passReqToCallback: true
 }, async ( req, usuario, pass, done) => {
-    const { 
+    var { 
         Nom_emp,
         Apellido_emp,
         correo,
-        NomRol
+        NomRol,
+        Recinto,
+        ID_Recinto
         //,ID_rol 
     } = req.body;
     console.log(req.body);
-    const newUser = {
+    var newUser = {
         Nom_emp, 
         Apellido_emp,
         usuario,
         correo,
         pass,
-        NomRol
+        NomRol,
+        Recinto,
+        ID_Recinto
         //,ID_rol
     };
 
     //ciframos
     newUser.pass = await bcy.encriptar(pass);
-    const resultado = await pool.query('INSERT INTO usuarios SET ?', [newUser]);
+    var resultado = await pool.query('INSERT INTO usuarios SET ?', [newUser]);
         //creamos mensaje
         req.flash('completo', 'Usuario añadido correctamente');
         newUser.ID_emp = resultado.insertId;
@@ -82,7 +85,7 @@ passport.serializeUser((user, done) =>{
 
 
 passport.deserializeUser(async (ID_emp, done) =>{
-    const fila = await pool.query('SELECT * FROM usuarios WHERE ID_emp = ?', [ID_emp]);
+    var fila = await pool.query('SELECT * FROM usuarios WHERE ID_emp = ?', [ID_emp]);
     done(null, fila[0]);
 });
 

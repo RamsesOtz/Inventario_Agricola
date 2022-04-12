@@ -1,20 +1,24 @@
+{{> navAdministrador}}
+
+<section class="home-section pt-4 mt-4">
+
 <div class="container mt-2">
 
     <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
         <li class="nav-item">
-             <a class="nav-link" href="/usuarios">USUARIOS</a>
+             <a class="nav-link" href="/Administrador/usuarios">USUARIOS</a>
+        </li>
+        <!--<li class="nav-item">
+            <a class="nav-link" href="/Administrador/roles">ROLES</a>
+        </li>-->
+        <!--<li class="nav-item">
+            <a class="nav-link" href="/Administrador/privilegios">PRIVILEGIOS</a>
+        </li>-->
+        <li class="nav-item">
+            <a class="nav-link" href="/Administrador/recintos">RECINTOS</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/roles">ROLES</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/privilegios">PRIVILEGIOS</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/recintos">RECINTOS</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link active" href="/mp">MATERIA PRIMA</a>
+            <a class="nav-link active" href="/Administrador/mp">MATERIA PRIMA</a>
         </li>
     </ul>
 
@@ -36,17 +40,17 @@
 
             <div class="row">
                 <div class="col">
-                    <a href="/pedido/listaPedidoRes" class="btn btn-outline-dark mb-4">
+                    <a href="/Administrador/pedido" class="btn btn-outline-dark mb-4">
                         <i class="bx bx-book-open"></i>
-                        Ver pedidos
+                        Pedidos pendientes
                     </a>
                 </div>
                 <div class="col">                     
-                    <a href="/mp/listaEntradaMp" class="btn btn-outline-success mb-4">
+                    <a href="/Administrador/mp/listaEntradaMp" class="btn btn-outline-success mb-4">
                         <i class='bx bxs-cart-add'></i>
                         Entradas
                     </a>
-                    <a href="#" class="btn btn-outline-dark mb-4">
+                    <a href="/Administrador/mp/listaSalidaMp" class="btn btn-outline-info mb-4">
                         <i class='bx bxs-cart-download' ></i>
                         Salidas
                     </a>
@@ -64,7 +68,8 @@
                         <th scope="col">Medida</th>
                         <th scope="col">Cantidad</th>
                         <th scope="col">Stock</th>
-                        <th scope="col">Estatus</th>
+                        <!--<th scope="col">Estatus</th>-->
+                        <!--<th scope="col"></th>-->
                         <th colspan="2">Acciones</th>
                         </tr>
                     </thead>
@@ -77,9 +82,11 @@
                         <td class="text-center">{{Medida_materiaPrima}}</td>
                         <td class="text-center">{{Cant_materiaPrima}}</td>
                         <td class="text-center">{{stock}}</td>
-                        <td class="text-center">{{estatus}}</td>
+                        <!--<td class="text-center">{{estatus}}</td>-->
+                        <!--<td class="text-center">{{Desc_estatus}}<i class='bx bxs-info-circle bx-tada'></i></td>-->
+                        
                         <td>
-                            <a href="/mp/editMp/{{ ID_materiaPrima }}" class="btn btn-outline-primary btn-sm">
+                            <a href="/Administrador/mp/editMp/{{ ID_materiaPrima }}" class="btn btn-outline-primary btn-sm">
                                 <i class='bx bx-edit-alt'></i>
                                 Editar
                             </a>
@@ -93,17 +100,18 @@
                         </td>
                         </tr>
                         {{else}}
-                        <div class="col-md-4 mx-auto">
+                        <div class="mx-auto pb-4">
                             <div class="card card-body text-center">
-                                <p>No se encuentran materias primas guardadas</p>
+                                <p>No se encuentra materia prima en el inventario</p>
                             </div>
                         </div>
                         {{/each}}
                     </tbody>
                 </table>
-            </div>
-        <div class="row">
             <caption class="pl-2 justify-content-center">Lista de materia prima del inventario principal</caption>
-        </div>
+            </div>
         </div>
     </div>
+
+</section>
+

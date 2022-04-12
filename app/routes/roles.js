@@ -19,7 +19,7 @@ router.post('/addRoles', isLoggedIn, async (req, res) => {
     await pool.query('INSERT INTO roles set ? ', [newRol]);
         //creamos mensaje
         req.flash('completo', 'Rol creado correctamente');
-    res.redirect('/roles');
+    res.redirect('/Administrador/roles');
 });
 
 router.get('/', isLoggedIn, async (req, res) => {
@@ -33,7 +33,7 @@ router.get('/deleteRoles/:ID_rol', isLoggedIn, async (req, res) => {
     await pool.query('DELETE FROM roles WHERE ID_rol = ?', [ID_rol] );
         //creamos mensaje
         req.flash('completo', 'Rol eliminado correctamente');
-    res.redirect('/roles');
+    res.redirect('/Administrador/roles');
 });
 
 router.get('/editRoles/:ID_rol', isLoggedIn, async (req, res) => {
@@ -53,6 +53,6 @@ router.post('/editRoles/:ID_rol', isLoggedIn, async (req, res) => {
     await pool.query('UPDATE roles set ? WHERE ID_rol = ?', [newRol, ID_rol]);
         //creamos mensaje
         req.flash('completo', 'Rol modificado correctamente');
-    res.redirect('/roles');
+    res.redirect('/Administrador/roles');
 });
 module.exports = router;

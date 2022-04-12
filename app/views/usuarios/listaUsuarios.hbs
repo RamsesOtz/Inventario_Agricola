@@ -1,101 +1,104 @@
-<div class="container mt-2">
+{{> navAdministrador}}
 
-    <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
-        <li class="nav-item">
-             <a class="nav-link active" href="/usuarios">USUARIOS</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/roles">ROLES</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/privilegios">PRIVILEGIOS</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/recintos">RECINTOS</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/mp">MATERIA PRIMA</a>
-        </li>
-    </ul>
+<section class="home-section pt-4 mt-4">
+    <div class="container mt-2">
 
-    {{#if completo}}
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 mx-auto">
+        <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" href="/Administrador/usuarios">USUARIOS</a>
+            </li>
+           <!--<li class="nav-item">
+                <a class="nav-link" href="/Administrador/roles">ROLES</a>
+            </li>-->
+            <!--<li class="nav-item">
+                <a class="nav-link" href="/Administrador/privilegios">PRIVILEGIOS</a>
+            </li>-->
+            <li class="nav-item">
+                <a class="nav-link" href="/Administrador/recintos">RECINTOS</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Administrador/mp">MATERIA PRIMA</a>
+            </li>
+        </ul>
 
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {{completo}}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+        {{#if completo}}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mx-auto">
+
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{completo}}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    {{/if}}
+        {{/if}}
 
-    <div class="row">
-        <a href="/usuarios/addUsuarios" class="btn btn-success mb-4">
-            <i class='bx bxs-plus-circle'></i>
-            Nuevo Usuario
-        </a>
-    </div>
-
-    <div class="justify-content-center row">
-        <div class="table-responsive">
-
-            <table class="table table-responsive table-lg table-striped table-borderedtable-hover">
-                <thead class="thead-dark">
-                    <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Apellido</th>
-                    <th scope="col">Usuario</th>
-                    <th scope="col">Correo</th>
-                    <th scope="col">Contraseña</th>
-                    <th scope="col">Rol</th>
-                    <!--<th scope="col">ID_rol</th>-->
-                    <th colspan="2">Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {{#each usuarios}}
-                    <tr>
-                    <th class="text-center" scope="row"> {{ ID_emp }} </th>
-                    <td>{{Nom_emp}}</td>
-                    <td>{{Apellido_emp}}</td>
-                    <td>{{usuario}}</td>
-                    <td>{{correo}}</td>
-                    <td>{{pass}}</td>
-                    <td>{{NomRol}}</td>
-                    <!--<td class="text-center">{{ID_rol}}</td>-->
-                    <td>
-                        <a href="/usuarios/editUsuarios/{{ ID_emp }}" class="btn btn-primary btn-sm">
-                            <i class='bx bx-edit-alt'></i>
-                            Editar
-                        </a>
-                            
-                    </td>
-                    <td>
-                        <button class="btn btn-danger btn-sm" onclick="popUpDelUs({{ID_emp}})">
-                            <ion-icon name="trash-outline"></ion-icon>
-                            Eliminar
-                        </button>
-                     </td>
-                    </tr>
-                    {{else}}
-                    <div class="col-md-4 mx-auto">
-                        <div class="card card-body text-center">
-                            <p>No se encuentran usuarios guardados</p>
-                        </div>
-                    </div>
-                    {{/each}}
-                </tbody>
-                </table>
-        </div>
         <div class="row">
-            <caption class="pl-2 justify-content-center">Lista de usuarios</caption>
+            <a href="/Administrador/usuarios/addUsuarios" class="btn btn-outline-success mb-4">
+                <i class='bx bxs-plus-circle'></i>
+                Nuevo Usuario
+            </a>
         </div>
 
+        <div class="justify-content-center row">
+            <div class="table-responsive">
+
+                <table class="table table-responsive table-lg table-striped table-borderedtable-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Correo</th>
+                        <!--<th scope="col">Contraseña</th>-->
+                        <th scope="col">Rol</th>
+                        <th scope="col">Recinto</th>
+                        <!--<th scope="col">ID_rol</th>-->
+                        <th colspan="2">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each usuarios}}
+                        <tr>
+                        <th class="text-center" scope="row"> {{ ID_emp }} </th>
+                        <td>{{Nom_emp}}</td>
+                        <td>{{Apellido_emp}}</td>
+                        <td>{{usuario}}</td>
+                        <td>{{correo}}</td>
+                        <!--<td>{{pass}}</td>-->
+                        <td>{{NomRol}}</td>
+                        <td>{{Recinto}}</td>
+                        <!--<td class="text-center">{{ID_rol}}</td>-->
+                        <td>
+                            <a href="/Administrador/usuarios/editUsuarios/{{ ID_emp }}" class="btn btn-outline-primary btn-sm">
+                                <i class='bx bx-edit-alt'></i>
+                                Editar
+                            </a>
+                                
+                        </td>
+                        <td>
+                            <button class="btn btn-outline-danger btn-sm" onclick="popUpDelUs({{ID_emp}})">
+                                <ion-icon name="trash-outline"></ion-icon>
+                                Eliminar
+                            </button>
+                        </td>
+                        </tr>
+                        {{else}}
+                        <div class="col-md-4 mx-auto pt-4">
+                            <div class="card card-body text-center">
+                                <p>No se encuentran usuarios registrados</p>
+                            </div>
+                        </div>
+                        {{/each}}
+                    </tbody>
+                    </table>
+                <caption class="pl-2 justify-content-center">Lista de usuarios</caption>
+            </div>
+        </div>
     </div>
-</div>
+</section>
