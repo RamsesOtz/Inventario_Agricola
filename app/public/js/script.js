@@ -203,6 +203,7 @@ function getSelectValueT(){
                 
           }
         }
+
         //entradas materia prima inventario principal
         function getSelectValueTEP(){
           
@@ -1439,6 +1440,211 @@ function getSelectValueMR(){
         
   }
 }
+
+function getSelectValueTPH(){
+          
+  var selectValT = document.getElementById('listTPH').value;
+  //console.log(selectValT);
+  //document.getElementById('txtT').innerHTML = selectValT;
+
+  var Tipo = selectValT;
+  switch (Tipo) {
+    case "pieza":
+      //console.log("Seleccionaste " + Tipo);
+      document.getElementById('formMPH').innerHTML = 
+      `<label>Medida</label>
+
+      <select onchange="getSelectValueMPH()" class="custom-select" id="listPH" name="Medida_materiaPrima">
+        <option value=""> Selecciona la medida que corresponde...</option>
+        <option value="pieza">Pieza</option>
+      </select>`;
+      break;
+      case "area":
+        //console.log("Seleccionaste " + Tipo);
+        document.getElementById('formMPH').innerHTML = 
+        `<label>Medida</label>
+
+        <select onchange="getSelectValueMPH()" class="custom-select" id="listPH" name="Medida_materiaPrima">
+          <option value=""> Selecciona la medida que corresponde...</option>
+          <option value="km²">Kilómetro cuadrado</option>
+          <option value="m²">Metro cuadradad</option>
+          <option value="mi²">Milla cuadradad</option>
+          <option value="yd²">Yarda cuadrada</option>
+          <option value="ft²">Pie cuadrado</option>
+          <option value="in²">Pulgada cuadrada</option>
+          <option value="ha²">Hectarea cuadrada</option>
+          <option value="ac²">Acre cuadrado</option>
+        </select>`;
+        break;
+      case "longitud":
+        //console.log("Seleccionaste " + Tipo);
+        document.getElementById('formMPH').innerHTML = 
+        `<label>Medida</label>
+
+        <select onchange="getSelectValueMPH()" class="custom-select" id="listPH" name="Medida_materiaPrima">
+          <option value=""> Selecciona la medida que corresponde...</option>
+          <option value="km">Kilometro</option>
+          <option value="m">Metro</option>
+          <option value="cm">Centimetro</option>
+          <option value="mm">Milímetro</option>
+          <option value="μm">Micrómetro</option>
+          <option value="nm">Nanómetro</option>
+          <option value="mi">Milla</option>
+          <option value="yd">Yarda</option>
+          <option value="ft">Pie</option>
+          <option value="in">Pulgada</option>
+          <option value="mn">Milla náutica</option>
+        </select>`;
+        break;
+      case "masa":
+        //console.log("Seleccionaste " + Tipo);
+        document.getElementById('formMPH').innerHTML =
+        `<label>Medida</label>
+
+        <select  onchange="getSelectValueMPH()" class="custom-select" id="listPH" name="Medida_materiaPrima">
+          <option value=""> Selecciona la medida que corresponde...</option>
+          <option value="t">Tonelada</option>
+          <option value="kg">Kilogramo</option>
+          <option value="g">Gramo</option>
+          <option value="mg">Milligramo</option>
+          option value="µg">Microgramo</option>
+          <option value="tl">Tonelada Larga</option>
+          <option value="tc">Tonelada Corta</option>
+          <option value="st">Stone</option>
+          <option value="lb">Libra</option>
+          <option value="oz">Onza</option>
+        </select>`;
+          break;
+      case "volumen":
+        //console.log("Seleccionaste " + Tipo);
+        document.getElementById('formMPH').innerHTML =
+        `<label>Medida</label>
+
+        <select onchange="getSelectValueMPH()" class="custom-select" id="listPH" name="Medida_materiaPrima">
+          <option value=""> Selecciona la medida que corresponde...</option>
+          <option value="l">Litro</option>
+          <option value="ml">Mililitro</option>
+          <option value="gi">Galon Imperial</option>
+        </select>`;
+          break;
+      default:
+        MsgOptionNotSelectedT();
+        document.getElementById('listPH').outerHTML = 
+        `<input disabled class="form-control" id="inputBlock" placeholder="Selecciona El tipo de medida">`;
+  }
+}
+
+function getSelectValueMPH(){
+  const texto = document.querySelector('#listPH').options[document.querySelector('#listPH').selectedIndex].text;
+  console.log(texto);
+
+  var Medida = texto;
+  switch (Medida) {
+    case "Pieza":
+      alert("Seleccionaste: " + Medida);
+      break;
+    case "Kilómetro cuadrado":
+      alert("Seleccionaste: " + Medida);
+      break;
+    case "Metro cuadradad":
+      alert("Seleccionaste: " + Medida);
+      break;
+    case "Milla cuadradad":
+      alert("Seleccionaste: " + Medida);
+      break;
+    case "Yarda cuadrada":
+      alert("Seleccionaste: " + Medida);
+      break;
+    case "Pie cuadrado":
+      alert("Seleccionaste: " + Medida);
+      break;
+    case "Pulgada cuadrada":
+      alert("Seleccionaste: " + Medida);
+      break;
+    case "Hectarea cuadrada":
+      alert("Seleccionaste: " + Medida);
+      break;
+    case "Acre cuadrado":
+      alert("Seleccionaste: " + Medida);
+      break;
+    case "Kilometro":
+      alert("Seleccionaste: " + Medida);
+      break;
+    case "Metro":
+      alert("Seleccionaste: " + Medida);
+      break;
+    case "Centimetro":
+      alert("Seleccionaste: " + Medida);
+      break;
+    case "Milímetro":
+      alert("Seleccionaste: " + Medida);
+      break;
+    case "Micrómetro":
+      alert("Seleccionaste: " + Medida);
+      break;
+    case "Nanómetro":
+      alert("Seleccionaste: " + Medida);
+      break;
+    case "Milla":
+      alert("Seleccionaste: " + Medida);
+      break;
+    case "Yarda":
+      alert("Seleccionaste: " + Medida);
+      break;
+    case "Pie":
+      alert("Seleccionaste: " + Medida);
+      break;
+    case "Pulgada":
+      alert("Seleccionaste: " + Medida);
+      break;
+    case "Milla náutica":
+      alert("Seleccionaste: " + Medida);
+      break;
+    case "Tonelada":
+      alert("Seleccionaste: " + Medida);
+      break;
+    case "Kilogramo":
+      alert("Seleccionaste: " + Medida);
+      break;
+    case "Gramo":
+      alert("Seleccionaste: " + Medida);
+      break;
+    case "Milligramo":
+      alert("Seleccionaste: " + Medida);
+      break;
+    case "Microgramo":
+      alert("Seleccionaste: " + Medida);
+      break;
+    case "Tonelada Larga":
+      alert("Seleccionaste: " + Medida);
+      break;
+    case "Tonelada Corta":
+      alert("Seleccionaste: " + Medida);
+      break;
+    case "Stone":
+      alert("Seleccionaste: " + Medida);
+      break;
+    case "Libra":
+      alert("Seleccionaste: " + Medida);
+      break;
+    case "Onza":
+      alert("Seleccionaste: " + Medida);
+      break;
+    case "Litro":
+      alert("Seleccionaste: " + Medida);
+      break;
+    case "Mililitro":
+      alert("Seleccionaste: " + Medida);
+      break;
+    case "Galon Imperial":
+      alert("Seleccionaste: " + Medida);
+      break;
+    default:
+    MsgOptionNotSelectedM();
+        
+  }
+}
+
 ///////////////////////EMPLEADO///////////////////////////
    
         /*function GetSelectedValue(){
@@ -1483,6 +1689,16 @@ function getSelectValueMR(){
 
         var Tipo = selectValT;
         switch (Tipo) {
+          case "pieza":
+            //console.log("Seleccionaste " + Tipo);
+            document.getElementById('formMIH').innerHTML = 
+            `<label>Medida</label>
+              <option value=""> Selecciona la medida que corresponde...</option>
+              <option value="pieza">Pieza</option>
+            <select onchange="getSelectValueMICH()" class="custom-select" id="listMICH" name="Medida_materiaPrima">
+
+            </select>`;
+            break;
             case "area":
               //console.log("Seleccionaste " + Tipo);
               document.getElementById('formMIH').innerHTML = 
@@ -1560,105 +1776,108 @@ function getSelectValueMR(){
 
       function getSelectValueMICH(){
         
-        var selectValM = document.getElementById('listMICH').value;
-        //console.log(selectValM);
-
-        var Medida = selectValM;
+        const texto = document.querySelector('#listMR').options[document.querySelector('#listMR').selectedIndex].text;
+        console.log(texto);
+      
+        var Medida = texto;
         switch (Medida) {
-          case "kCuadrado":
+          case "Pieza":
             alert("Seleccionaste: " + Medida);
             break;
-          case "mCuadrado":
+          case "Kilómetro cuadrado":
             alert("Seleccionaste: " + Medida);
             break;
-          case "miCuadrado":
+          case "Metro cuadradad":
             alert("Seleccionaste: " + Medida);
             break;
-          case "yCuadrado":
+          case "Milla cuadradad":
             alert("Seleccionaste: " + Medida);
             break;
-          case "pCuadrado":
+          case "Yarda cuadrada":
             alert("Seleccionaste: " + Medida);
             break;
-          case "puCuadrado":
+          case "Pie cuadrado":
             alert("Seleccionaste: " + Medida);
             break;
-          case "hCuadrado":
+          case "Pulgada cuadrada":
             alert("Seleccionaste: " + Medida);
             break;
-          case "aCuadrado":
+          case "Hectarea cuadrada":
             alert("Seleccionaste: " + Medida);
             break;
-          case "kilometro":
+          case "Acre cuadrado":
             alert("Seleccionaste: " + Medida);
             break;
-          case "metro":
+          case "Kilometro":
             alert("Seleccionaste: " + Medida);
             break;
-          case "centimetro":
+          case "Metro":
             alert("Seleccionaste: " + Medida);
             break;
-          case "milimetro":
+          case "Centimetro":
             alert("Seleccionaste: " + Medida);
             break;
-          case "micrometro":
+          case "Milímetro":
             alert("Seleccionaste: " + Medida);
             break;
-          case "nanometro":
+          case "Micrómetro":
             alert("Seleccionaste: " + Medida);
             break;
-          case "milla":
+          case "Nanómetro":
             alert("Seleccionaste: " + Medida);
             break;
-          case "yarda":
+          case "Milla":
             alert("Seleccionaste: " + Medida);
             break;
-          case "pie":
+          case "Yarda":
             alert("Seleccionaste: " + Medida);
             break;
-          case "pulgada":
+          case "Pie":
             alert("Seleccionaste: " + Medida);
             break;
-          case "millaNautica":
+          case "Pulgada":
             alert("Seleccionaste: " + Medida);
             break;
-          case "tonelada":
+          case "Milla náutica":
             alert("Seleccionaste: " + Medida);
             break;
-          case "kilogramo":
+          case "Tonelada":
             alert("Seleccionaste: " + Medida);
             break;
-          case "gramo":
+          case "Kilogramo":
             alert("Seleccionaste: " + Medida);
             break;
-          case "milligramo":
+          case "Gramo":
             alert("Seleccionaste: " + Medida);
             break;
-          case "microgramo":
+          case "Milligramo":
             alert("Seleccionaste: " + Medida);
             break;
-          case "toneladaL":
+          case "Microgramo":
             alert("Seleccionaste: " + Medida);
             break;
-          case "toneladaC":
+          case "Tonelada Larga":
             alert("Seleccionaste: " + Medida);
             break;
-          case "stone":
+          case "Tonelada Corta":
             alert("Seleccionaste: " + Medida);
             break;
-          case "libra":
+          case "Stone":
             alert("Seleccionaste: " + Medida);
             break;
-          case "onza":
+          case "Libra":
             alert("Seleccionaste: " + Medida);
             break;
-          case "litro":
+          case "Onza":
             alert("Seleccionaste: " + Medida);
             break;
-          case "mililitro":
+          case "Litro":
             alert("Seleccionaste: " + Medida);
             break;
-          case "galonI":
+          case "Mililitro":
+            alert("Seleccionaste: " + Medida);
+            break;
+          case "Galon Imperial":
             alert("Seleccionaste: " + Medida);
             break;
           default:
@@ -1666,6 +1885,7 @@ function getSelectValueMR(){
               
         }
       }
+
 
      /*//desabilitar boton precionado
       function btnDisable(ID_pedidoH){
@@ -1705,7 +1925,9 @@ function getSelectValueMR(){
         getSelectValueTPHR,
         getSelectValueMPHR,
         //,btnDisable
-        selectRecintos
+        selectRecintos,
+        getSelectValueTPH,
+        getSelectValueMPH
 
 
 

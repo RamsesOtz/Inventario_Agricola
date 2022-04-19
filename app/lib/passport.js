@@ -50,8 +50,7 @@ passport.use('local.registrar', new LocalStrategy ({
         Apellido_emp,
         correo,
         NomRol,
-        Recinto,
-        ID_Recinto
+        Recinto
         //,ID_rol 
     } = req.body;
     console.log(req.body);
@@ -62,8 +61,7 @@ passport.use('local.registrar', new LocalStrategy ({
         correo,
         pass,
         NomRol,
-        Recinto,
-        ID_Recinto
+        Recinto
         //,ID_rol
     };
 

@@ -63,11 +63,12 @@
                         <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Nombre</th>
-                        <th scope="col">Descripción</th>
                         <th scope="col">Medida</th>
                         <th scope="col">Cantidad</th>
                         <th scope="col">Dejo materia prima</th>
                         <th scope="col">Proveedor</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col"></th>
                         <th scope="col">Entregado</th>
                         <th colspan="2">Acciones</th>
                         </tr>
@@ -77,19 +78,13 @@
                         <tr>
                         <th class="text-center" scope="row"> {{ ID_entradaMp }} </th>
                         <td>{{Nom_mp}}</td>
-                        <td>{{Desc_mp}}</td>
                         <td class="text-center">{{Medida_mp}}</td>
                         <td class="text-center">{{Cant_mp}}</td>
                         <td class="text-center">{{NomUs_dejo}}</td>
                         <td class="text-center">{{proveedor}}</td>
+                        <td>{{Estatus_mp}}</td>
+                        <td><i class='bx bxs-info-circle' data-toggle="tooltip" data-html="true" title="{{Desc_EstatusMP}}"></i></td>
                         <td class="text-center">{{timeago Date_Hr}}</td>
-                        <td>
-                            <a href="/Administrador/mp/editEntradaMp/{{ ID_entradaMp }}" class="btn btn-outline-primary btn-sm">
-                                <i class='bx bx-edit-alt'></i>
-                                Editar
-                            </a>
-                            
-                        </td>
                         <td>
                             <button onclick="popUpDelEntradaMp({{ ID_entradaMp }})" class="btn btn-outline-danger btn-sm">
                                 <ion-icon name="trash-outline"></ion-icon>

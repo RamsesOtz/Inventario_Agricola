@@ -40,8 +40,7 @@ router.post('/editUsuarios/:ID_emp', isLoggedIn, async (req, res) => {
         correo
         //,pass
         ,NomRol
-        ,Recinto,
-        ID_Recinto
+        ,Recinto
     } = req.body;
     const newUsuario = { 
         Nom_emp,
@@ -50,8 +49,7 @@ router.post('/editUsuarios/:ID_emp', isLoggedIn, async (req, res) => {
         correo
         //,pass
         ,NomRol
-        ,Recinto,
-        ID_Recinto
+        ,Recinto
     };
     
     try{

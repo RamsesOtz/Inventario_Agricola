@@ -25,7 +25,7 @@ router.post('/addRegistroH', isLoggedIn, async (req, res) => {
         Medida_mpH,
         Cant_mpH,
         StockH,
-        ID_Recinto: req.user.ID_Recinto
+        Recinto: req.user.Recinto
     };
 
     await pool.query('INSERT INTO inventarioH set ? ', [newRegistroH]);
@@ -35,7 +35,7 @@ router.post('/addRegistroH', isLoggedIn, async (req, res) => {
 });
 
 router.get('/', isLoggedIn, async (req, res) => {
-    const productos = await pool.query('SELECT * FROM inventarioH WHERE ID_Recinto = ?', [req.user.ID_Recinto]);
+    const productos = await pool.query('SELECT * FROM inventarioH WHERE Recinto = ?', [req.user.Recinto]);
     console.log(productos);
     res.render('registroH/listaRegistroH', { productos });
 });

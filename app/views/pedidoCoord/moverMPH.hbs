@@ -1,6 +1,21 @@
 {{> navCoordinador}}
 
 <section class="home-section pt-4 mt-4">
+
+<div class="container mt-2">
+
+    <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+        <li class="nav-item">
+             <a class="nav-link active" href="/Coordinador/pedidoCoord">INVENTARIO</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Coordinador/entradaH">ENTRADAS</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Coordinador/salidaH">SALIDAS</a>
+        </li>
+    </ul>
+
     {{#if mensaje}}
     <div class="container">
         <div class="row">
@@ -35,9 +50,9 @@
     {{/if}}
 
         <div class="row">
-            <div class="col-md-8 mx-auto">
+            <div class="col-md-8 mx-auto pb-4 mb-4">
 
-                <a href="/Coordinador/inventarioH" class="btn btn-outline-dark btn-sm mb-4">
+                <a href="/Coordinador/pedidoCoord" class="btn btn-outline-dark btn-sm mb-4">
                     <i class='bx bx-arrow-back'></i>
                     Regresar
                 </a>
@@ -47,33 +62,24 @@
                         MOVIMIENTO DE MATERIA PRIMA
                     </div>
                     <div class="card-body">
-                        <form action="/Coordinador/inventarioH/moverMPH/{{ inventarioH.ID_mpH }}" method="POST">
-                            <!--<div class="form-group">
-                                <label>ID: </label>
-                                <input type="number" class="form-control" name="ID_mpH" value="{{ inventarioH.ID_mpH }}" disabled>
-                            </div>-->
+                        <form action="/Coordinador/pedidoCoord/moverMPH/{{ inventarioH.ID_mpH }}" method="POST">
                             <div class="form-group">
                                 <label>Nombre de materia prima: </label>
-                                <input type="text" class="form-control" name="Nom_mpH" value="{{ inventarioH.Nom_mpH }}" disabled>
+                                <input type="text" class="form-control" name="Nom_mpH" value="{{ inventarioH.Nom_mpH }}" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>Descripción de materia prima: </label>
+                                <textarea name="Desc_mpH" rows="2" class="form-control" readonly>{{ inventarioH.Desc_mpH }}</textarea>
                             </div>
                             <div class="form-group">
                                 <label>Medida</label>
-                                <input class="form-control" name="Medida_mpH" value="{{ inventarioH.Medida_mpH }}" disabled>
+                                <input class="form-control" name="Medida_mpH" value="{{ inventarioH.Medida_mpH }}" readonly>
                             </div>
+                            <label><u>Existencias disponibles:</u> <b>{{ inventarioH.StockH }} {{inventarioH.Medida_mpH}}</b></label>
                             <div class="form-group">
-                                <label>Cantidad disponible en inventario local:</label>
-                                <input type="number" class="form-control" value="{{ inventarioH.StockH }}" disabled>
+                                <label>Cantidad a mover: </label>
+                                <input type="number" min="0" max="{{ inventarioH.StockH }}" value="0" class="form-control" name="Cant_mpH" oninput="this.value = Math.abs(this.value)" id="cant">
                             </div>
-                            <div class="form-group">
-                                <label>Cantidad: </label>
-                                <input type="number" class="form-control" name="Cant_mpH" value="0" id="cant">
-                            </div>
-                            <!--QUITAR-->
-                            <div class="form-group">
-                                <label>Existencias: </label>
-                                <input type="number" class="form-control" name="StockH" value="0" id="copycant">
-                            </div>
-                            <!--QUITAR-->
                             <div class="form-group">
                                 <button class="btn btn-dark btn-block">Guardar</button>
                             </div>

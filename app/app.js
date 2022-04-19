@@ -61,9 +61,14 @@ app.use('/Administrador/privilegios', require('./routes/privilegios'));
 app.use('/Administrador/recintos', require('./routes/recintos'));
 app.use('/Administrador/mp', require('./routes/mp'));
 app.use('/Administrador/pedido', require('./routes/pedido'));
+
+app.use('/Coordinador/pedidoCoord', require('./routes/pedidoCoord'));
 app.use('/Coordinador/inventarioH', require('./routes/inventarioH'));
 app.use('/Coordinador/entradaH', require('./routes/entradaH'));
 app.use('/Coordinador/salidaH', require('./routes/salidaH'));
+
+app.use('/Empleado/pedidoEmp', require('./routes/pedidoEmp'));
+//
 app.use('/Empleado/registroH', require('./routes/registroH'));
 
 //Public

@@ -27,7 +27,7 @@ router.post('/addSalidaH', isLoggedIn, async (req, res) => {
         NomUs_solicito,
         NomUs_autorizo,
         NomUs_llevo,
-        ID_Recinto: req.user.ID_Recinto
+        Recinto: req.user.Recinto
     };
     await pool.query('INSERT INTO salidaH set ? ', [newSalidaH]);
         //creamos mensaje
@@ -36,7 +36,7 @@ router.post('/addSalidaH', isLoggedIn, async (req, res) => {
 });
 
 router.get('/', isLoggedIn, async (req, res) => {
-    const salidasH = await pool.query('SELECT * FROM salidaH WHERE ID_Recinto = ?', [req.user.ID_Recinto]);
+    const salidasH = await pool.query('SELECT * FROM salidaH WHERE Recinto = ?', [req.user.Recinto]);
     res.render('salidaH/listaSalidaH', { salidasH });
 });
 

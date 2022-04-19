@@ -6,7 +6,7 @@
 
     <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
         <li class="nav-item">
-             <a class="nav-link" href="/Coordinador/inventarioH">INVENTARIO</a>
+             <a class="nav-link" href="/Coordinador/pedidoCoord">INVENTARIO</a>
         </li>
         <li class="nav-item">
             <a class="nav-link active" href="/Coordinador/entradaH">ENTRADAS</a>
@@ -31,15 +31,6 @@
         </div>
     </div>
     {{/if}}
-
-    <div class="row">
-        <div class="col">
-        <a href="/Coordinador/entradaH/addEntradaH" class="btn btn-outline-success mb-4">
-            <i class='bx bxs-plus-circle'></i>
-            Registrar entrega
-        </a> 
-        </div>
-    </div>
    
 <div class="justify-content-center row">
     <div class="table-responsive-xl">
@@ -52,6 +43,8 @@
                 <th scope="col">Medida</th>
                 <th scope="col">Cantidad</th>
                 <th scope="col">Dejo Materia prima</th>
+                <th scope="col">Estado</th>
+                <th scope="col"></th>
                 <th scope="col">Se entrego</th>
                 <th colspan="2">Acciones</th>
                 </tr>
@@ -65,13 +58,9 @@
                 <td>{{Medida_mpHE}}</td>
                 <td>{{Cant_mpHE}}</td>
                 <td>{{NomUs_dejo}}</td>
+                <td>{{Estatus_mpHE}}</td>
+                <td><i class='bx bxs-info-circle' data-toggle="tooltip" data-html="true" title="{{Desc_EstatusMPHE}}"></i></td>
                 <td>{{timeago Date_HrE}}</td>
-                <td>
-                    <a href="/Coordinador/entradaH/editEntradaH/{{ ID_entradaH }}" class="btn btn-outline-primary btn-sm">
-                        <i class='bx bx-edit-alt'></i>
-                        Editar
-                    </a>
-                </td>
                 <td>
                     <button class="btn btn-outline-danger btn-sm" onclick="popUpDelEH({{ID_entradaH}})">
                         <ion-icon name="trash-outline"></ion-icon>

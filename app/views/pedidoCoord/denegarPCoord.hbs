@@ -1,4 +1,4 @@
-{{> navAdministrador}}
+{{> navCoordinador}}
 
 <section class="home-section pt-4 mt-4">
 
@@ -6,19 +6,13 @@
 
     <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
         <li class="nav-item">
-             <a class="nav-link" href="/Administrador/usuarios">USUARIOS</a>
-        </li>
-        <!--<li class="nav-item">
-            <a class="nav-link" href="/Administrador/roles">ROLES</a>
-        </li>-->
-        <!--<li class="nav-item">
-            <a class="nav-link" href="/Administrador/privilegios">PRIVILEGIOS</a>
-        </li>-->
-        <li class="nav-item">
-            <a class="nav-link" href="/Administrador/recintos">RECINTOS</a>
+             <a class="nav-link active" href="/Coordinador/pedidoCoord">INVENTARIO</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link active" href="#">MATERIA PRIMA</a>
+            <a class="nav-link" href="/Coordinador/entradaH">ENTRADAS</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Coordinador/salidaH">SALIDAS</a>
         </li>
     </ul>
 
@@ -73,58 +67,40 @@
         <div class="row pt-4 mt-4">
             <div class="col-md-8 mx-auto  pb-4 mb-4">
 
-                <a href="/Administrador/pedido" class="btn btn-outline-dark btn-sm mb-4">
+                <a href="/Coordinador/pedidoCoord/listaPPL" class="btn btn-outline-dark btn-sm mb-4">
                     <i class='bx bx-arrow-back'></i>
                     Regresar
-                    </a>
+                </a>
 
                 <div class="card">
                     <div class="card-header text-center">
-                        CONFIRMAR PEDIDO
+                        DENEGAR PETICION
                     </div>
                     <div class="card-body">
-                        <form action="/Administrador/pedido/confirmarPedido/{{ pedido.ID_pedidoH }}" method="POST">
+                        <form action="/Coordinador/pedidoCoord/denegarPCoord/{{ pedido.ID_pedidoH }}" method="POST">
                              <div class="form-group">
                                 <label>ID del pedido: </label>
-                                <input type="text" disabled value="{{ pedido.ID_pedidoH }}" class="form-control">
+                                <input type="text" value="{{ pedido.ID_pedidoH }}" class="form-control" disabled>
                             </div>
                             <div class="form-group">
                                 <label>Pedido: </label>
-                                <input type="text" value="{{ pedido.pedidoH }}" class="form-control" name="Nom_mp" readonly>
+                                <input type="text" value="{{ pedido.pedidoH }}" class="form-control" name="pedidoH" readonly>
                             </div>
                             <div class="form-group">
                                 <label>Descripción del pedido: </label>
-                                <textarea name="Desc_mpS" rows="2" class="form-control" readonly>{{ pedido.Desc_pedido }}</textarea>
+                                <textarea name="Desc_pedido" rows="2" class="form-control" readonly>{{ pedido.Desc_pedido }}</textarea>
                             </div>
                              <div class="form-group">
                                 <label>Medida: </label>
-                                <input type="text" value="{{ pedido.MedidaHP }}" class="form-control" name="Medida_mp" readonly>
+                                <input type="text" value="{{ pedido.MedidaHP }}" class="form-control" name="MedidaHP" readonly>
                             </div>
                             <div class="form-group">
-                                <label>Cantidad que requiere: </label>
-                                <input type="number" value="{{ pedido.CantHP }}" class="form-control" name="Cant_mp" readonly>
+                                <label>Cantidad requerida: </label>
+                                <input type="number" value="{{ pedido.CantHP }}" class="form-control" name="CantHP" readonly>
                             </div>
                             <div class="form-group">
-                                <label>Solicitante: </label>
-                                <input type="text" class="form-control" name="NomUs_solicito" placeholder="Escribe el nombre del personal quien solicito la materia prima...">
-                                <!--Añadir boton para agregar un nombre que no esta-->
-                                <!--Añadir drop down con los nombres de los usaurios registrados-->
-                            </div>
-                            <div class="form-group">
-                                <label>Autorizo: </label>
-                                <input type="text" class="form-control" name="NomUs_autorizo" placeholder="Escribe el nombre del personal que autorizo la salida">
-                                <!--Añadir boton para agregar un nombre que no esta-->
-                                <!--Añadir drop down con los nombres de los usaurios registrados-->
-                            </div>
-                            <div class="form-group">
-                                <label>Transporto: </label>
-                                <input type="text" class="form-control" name="NomUs_llevo" placeholder="Escribe el nombre del personal que transporto la materia prima...">
-                                <!--Añadir boton para agregar un nombre que no esta-->
-                                <!--Añadir drop down con los nombres de los usaurios registrados-->
-                            </div>
-                            <div class="form-group">
-                                <label>Observaciones del pedido: </label>
-                                <textarea rows="2" maxlength="500" class="form-control" name="Desc_EstatusMPS" placeholder="Escribe alguna observación que quieras dar a conocer..."></textarea>
+                                <label>Observación: </label>
+                                <textarea rows="2" maxlength="500" class="form-control" name="Desc_EstatusHP" placeholder="Escribe el motivo por el cual se denego el pedido..."></textarea>
                             </div>
                             <div class="form-group">
                                 <button class="btn btn-dark btn-block">Confirmar</button>

@@ -6,7 +6,7 @@
 
     <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
         <li class="nav-item">
-             <a class="nav-link active" href="/Coordinador/inventarioH">INVENTARIO</a>
+             <a class="nav-link active" href="/Coordinador/pedidoCoord">INVENTARIO</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/Coordinador/entradaH">ENTRADAS</a>
@@ -67,7 +67,7 @@
 
 <div class="row">
     <div class="col">
-        <a href="/Coordinador/inventarioH/listaPedidoHRea" class="btn btn-outline-dark mb-4">
+        <a href="/Coordinador/pedidoCoord/listaPPL" class="btn btn-outline-dark mb-4">
             <i class='bx bxs-book-open' ></i>
             Peticiones pendientes
         </a>
@@ -108,13 +108,13 @@
                 <td>{{timeago Date_HrEnviado}}</td>
                 <!--<td>{{EstatusH}}</td>-->
                 <td>
-                    <a href="/Coordinador/inventarioH/moverMPH/{{ ID_mpH }}" class="btn btn-outline-primary btn-sm">
+                    <button onclick="popUpMover({{ID_mpH}})" class="btn btn-outline-primary btn-sm">
                         <ion-icon name="move-outline"></ion-icon>
                         Mover
-                    </a>
+                    </button>
                 </td>
                 <td>
-                    <button class="btn btn-outline-danger btn-sm" onclick="popUpRegresar({{ID_mpH}})">
+                    <button onclick="popUpRegresar({{ID_mpH}})" class="btn btn-outline-danger btn-sm">
                         <i class='bx bx-redo bx-flip-horizontal'></i>
                         Regresar
                     </button>
@@ -139,4 +139,3 @@
 </div>
 
 </section>
-

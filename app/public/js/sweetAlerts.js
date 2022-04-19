@@ -282,7 +282,9 @@
     Swal.fire({
       position: 'center',
       width: '45%',
+      icon: 'warning',
       title: '¿Quieres Cancelar el pedido ' + ID_pedidoH + '?',
+      text: 'Al denegar este pedido, no podras confirmarlo!!',
 
       allowOutsideClick: false,
       allowEscapeKey: false,
@@ -347,6 +349,7 @@
       width: '45%',
       icon: 'question',
       title: '¿Quieres confirmar este pedido ' + ID_pedidoH + '?',
+      text: 'Al confirmar este pedido, el estado del proceso sera actualizado!!',
 
       allowOutsideClick: false,
       allowEscapeKey: false,
@@ -601,8 +604,8 @@
       position: 'center',
       width: '45%',
       icon: 'warning',
-      title: '¿Quieres eliminar la materia prima ' + ID_pedidoH + '?',
-      text: 'Al eliminar este pedidio, no podras recuperar la información!!',
+      title: '¿Quieres eliminar el pedido ' + ID_pedidoH + '?',
+      text: 'Al eliminar este pedido, no podras recuperar la información!!',
 
       allowOutsideClick: false,
       allowEscapeKey: false,
@@ -627,13 +630,13 @@
 
   }
 
-  function popUpMover(){
+  function popUpMover(ID_mpH){
     Swal.fire({
       position: 'center',
       width: '45%',
-      icon: 'warning',
-      title: '¿Quieres realizar este movimiento ?',
-      text: 'Una vez confirmes el movimiento, no podras desacer los cambios!',
+      icon: 'question',
+      title: '¿Quieres realizar el movimiento de la materia prima ' + ID_mpH + '?',
+      text: 'Al confirmar, tendras que especificar en el formulario, la cantidad a mover!',
 
       allowOutsideClick: false,
       allowEscapeKey: false,
@@ -652,7 +655,7 @@
 
     }).then((result) => {
       if (result.isConfirmed) {
-        window.location = '/Coordinador/inventarioH/moverMPH/'+ ID_mpH;
+        window.location = '/Coordinador/pedidoCoord/moverMPH/'+ ID_mpH;
       }
     });
   }
@@ -682,11 +685,269 @@
 
     }).then((result) => {
       if (result.isConfirmed) {
-        window.location = '/Coordinador/inventarioH/regresarMPH/'+ ID_mpH;
+        window.location = '/Coordinador/pedidoCoord/regresarMPH/'+ ID_mpH;
       }
     });
   }
 
+  /*function popUpPedidoRealizado(ID_materiaPrima){
+    Swal.fire({
+      position: 'center',
+      width: '40%',
+      icon: 'question',
+      title: '¿Quieres realizar el pedido de la materia prima ' + ID_materiaPrima + '?',
+      text: 'Al confirmar tendras que llenar los campos vacíos del formulario',
+
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      allowEnterKey: false,
+      stopKeydownPropagation: false,
+
+      showConfirmButton: true,
+      confirmButtonText: 'Confirmar',
+      confirmButtonColor: '#68CA39',
+      confirmButtonAriaLabel: 'Confirmar',
+
+      showCancelButton: true,
+      cancelButtonText: 'Cancelar',
+      cancelButtonColor: '#B81212',
+      cancelButtonAriaLabel: 'Cancelar'
+
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location = '/Empleado/pedidoEmp/addPH/'+ ID_materiaPrima;
+      }
+    });
+  }*/
+  
+/////////////////////////////////ADMINISTRADOR//////////////////////////////////
+
+/////////////////////////////////ADMINISTRADOR//////////////////////////////////
+
+/////////////////////////////////COORDINADOR//////////////////////////////////
+function ReaPedidoCoord(ID_materiaPrima){
+  Swal.fire({
+    position: 'center',
+    width: '45%',
+    icon: 'warning',
+    title: '¿Quieres realizar un pedido de la materia prima ' + ID_materiaPrima + '?',
+    text: 'Una vez realizado el pedido, tendras que esperar a que el coordinador del recinto lo confirme!!',
+
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    allowEnterKey: false,
+    stopKeydownPropagation: false,
+
+    showConfirmButton: true,
+    confirmButtonText: 'Confirmar',
+    confirmButtonColor: '#68CA39',
+    confirmButtonAriaLabel: 'Confirmar',
+
+    showCancelButton: true,
+    cancelButtonText: 'Cancelar',
+    cancelButtonColor: '#B81212',
+    cancelButtonAriaLabel: 'Cancelar'
+
+  }).then((result) => {
+    if (result.isConfirmed) {
+      window.location = '/Coordinador/pedidoCoord/addPCoord/'+ ID_materiaPrima;
+    }
+  });
+
+}
+
+function DelPCoord(ID_pedidoH){
+  Swal.fire({
+    position: 'center',
+    width: '45%',
+    icon: 'warning',
+    title: '¿Quieres eliminar el pedido ' + ID_pedidoH + '?',
+    text: 'Al eliminar este pedido, no podras recuperar la información!!',
+
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    allowEnterKey: false,
+    stopKeydownPropagation: false,
+
+    showConfirmButton: true,
+    confirmButtonText: 'Confirmar',
+    confirmButtonColor: '#68CA39',
+    confirmButtonAriaLabel: 'Confirmar',
+
+    showCancelButton: true,
+    cancelButtonText: 'Cancelar',
+    cancelButtonColor: '#B81212',
+    cancelButtonAriaLabel: 'Cancelar'
+
+  }).then((result) => {
+    if (result.isConfirmed) {
+      window.location = '/Coordinador/pedidoCoord/deletePRC/'+ ID_pedidoH;
+    }
+  });
+
+}
+
+function ConfirmPeticionCoord(ID_pedidoH){
+  Swal.fire({
+    position: 'center',
+    width: '45%',
+    icon: 'question',
+    title: '¿Quieres confirmar este pedido ' + ID_pedidoH + '?',
+    text: 'Al confirmar este pedido, el estado del proceso sera actualizado!!',
+
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    allowEnterKey: false,
+    stopKeydownPropagation: false,
+
+    showConfirmButton: true,
+    confirmButtonText: 'Confirmar',
+    confirmButtonColor: '#68CA39',
+    confirmButtonAriaLabel: 'Confirmar',
+
+    showCancelButton: true,
+    cancelButtonText: 'Cancelar',
+    cancelButtonColor: '#B81212',
+    cancelButtonAriaLabel: 'Cancelar'
+
+  }).then((result) => {
+    if (result.isConfirmed) {
+      //asigna atributo desabilitado a los botones con el ID_pedidoH
+        //const button = document.getElementById(ID_pedidoH);
+        //button.setAttribute("disabled", "true");
+
+      window.location = '/Coordinador/pedidoCoord/confirmarPCoord/'+ ID_pedidoH;
+    }
+  });
+
+}
+
+function DenPeticionCoord(ID_pedidoH){
+  Swal.fire({
+    position: 'center',
+    width: '45%',
+    icon: 'warning',
+    title: '¿Quieres denegar el pedido ' + ID_pedidoH + '?',
+    text: 'Al denegar este pedido, no podras confirmarlo!!',
+
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    allowEnterKey: false,
+    stopKeydownPropagation: true,
+
+    showConfirmButton: true,
+    confirmButtonText: 'Confirmar',
+    confirmButtonColor: '#68CA39',
+    confirmButtonAriaLabel: 'Confirmar',
+
+    showCancelButton: true,
+    cancelButtonText: 'Cancelar',
+    cancelButtonColor: '#B81212',
+    cancelButtonAriaLabel: 'Cancelar'
+
+  }).then((result) => {
+    if (result.isConfirmed) {
+      window.location = '/Coordinador/pedidoCoord/denegarPCoord/'+ ID_pedidoH;
+    }
+  });
+
+}
+
+function agregarMPH(ID_pedidoH){
+  Swal.fire({
+    position: 'center',
+    width: '45%',
+    icon: 'question',
+    title: '¿Quieres agregar la materia prima ' + ID_pedidoH + ' al inventario local?',
+    text: 'Al confirmar, el estado del pedido se actualizara!',
+
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    allowEnterKey: false,
+    stopKeydownPropagation: true,
+
+    showConfirmButton: true,
+    confirmButtonText: 'Confirmar',
+    confirmButtonColor: '#68CA39',
+    confirmButtonAriaLabel: 'Confirmar',
+
+    showCancelButton: true,
+    cancelButtonText: 'Cancelar',
+    cancelButtonColor: '#B81212',
+    cancelButtonAriaLabel: 'Cancelar'
+
+  }).then((result) => {
+    if (result.isConfirmed) {
+      window.location = '/Coordinador/pedidoCoord/addInvH/'+ ID_pedidoH;
+    }
+  });
+
+}
+/////////////////////////////////COORDINADOR//////////////////////////////////
+
+/////////////////////////////////EMPLEADO//////////////////////////////////
+function popUpDelPHPrea(ID_pedidoH){
+  Swal.fire({
+    position: 'center',
+    width: '45%',
+    icon: 'warning',
+    title: '¿Quieres eliminar el pedido ' + ID_pedidoH + '?',
+    text: 'Al eliminar este pedido, no podras recuperar la información!!',
+
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    allowEnterKey: false,
+    stopKeydownPropagation: false,
+
+    showConfirmButton: true,
+    confirmButtonText: 'Confirmar',
+    confirmButtonColor: '#68CA39',
+    confirmButtonAriaLabel: 'Confirmar',
+
+    showCancelButton: true,
+    cancelButtonText: 'Cancelar',
+    cancelButtonColor: '#B81212',
+    cancelButtonAriaLabel: 'Cancelar'
+
+  }).then((result) => {
+    if (result.isConfirmed) {
+      window.location = '/Empleado/pedidoEmp/deleteHPrea/'+ ID_pedidoH;
+    }
+  });
+
+}
+
+function ReaPedidoEmp(ID_materiaPrima){
+  Swal.fire({
+    position: 'center',
+    width: '45%',
+    icon: 'warning',
+    title: '¿Quieres realizar un pedido de la materia prima ' + ID_materiaPrima + '?',
+    text: 'Una vez realizado el pedido, tendras que esperar a que el coordinador del recinto lo confirme!!',
+
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    allowEnterKey: false,
+    stopKeydownPropagation: false,
+
+    showConfirmButton: true,
+    confirmButtonText: 'Confirmar',
+    confirmButtonColor: '#68CA39',
+    confirmButtonAriaLabel: 'Confirmar',
+
+    showCancelButton: true,
+    cancelButtonText: 'Cancelar',
+    cancelButtonColor: '#B81212',
+    cancelButtonAriaLabel: 'Cancelar'
+
+  }).then((result) => {
+    if (result.isConfirmed) {
+      window.location = '/Empleado/pedidoEmp/addPH/'+ ID_materiaPrima;
+    }
+  });
+
+}
+/////////////////////////////////EMPLEADO//////////////////////////////////
   module.exports = {
     Bienvenido,
     popUpDelUs,
@@ -713,6 +974,15 @@
     popUpDelRegistroH,
     popUpDelIHPrea,
     popUpMover,
-    popUpRegresar
+    popUpRegresar,
+    //,popUpPedidoRealizado
+    ReaPedidoCoord,
+    DelPCoord,
+    popUpDelPHPrea,
+    ConfirmPeticionCoord,
+    DenPeticionCoord,
+    ReaPedidoEmp,
+    agregarMPH
+
     
   }
